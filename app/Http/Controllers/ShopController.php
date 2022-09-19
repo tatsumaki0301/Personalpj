@@ -39,7 +39,7 @@ class ShopController extends Controller
         $query = Shop::query();
 
         if($request->input){
-            $query->where('shop_name', 'LIKE BAINARY', "%{$request->input}%");
+            $query->where('shop_name', 'LIKE BINARY', "%{$request->input}%");
         }
         if($request->area_id){
             $query->where('area_id', $request->area_id)
