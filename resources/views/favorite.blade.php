@@ -28,16 +28,6 @@
     font-size: 25px;
     font-weight: bold;
     font-family: serif;
-
-  }
-  .button-item{
-    border: none;
-    background-color: WhiteSmoke;
-    font-size: 25px;
-    font-weight: bold;
-    font-family: serif;
-    color: blue;
-    cursor: hand;
   }
   .menu{
     display: inline-block;
@@ -151,11 +141,6 @@
   margin: 0 auto;
 }
 
-
-.login-area{
-  width: 100%;
-  text-align: center;
-}
 .card_group{
   width: 90%;
   display: flex;
@@ -204,17 +189,11 @@ img {
 
 @section('nav')
 <div class="nav_area">
-@if (Auth::check())
   <nav class="nav" id="nav">
     <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/mypage">Mypage</a></li>
-      <form action="{{route('logout')}}" method="POST">
-      @csrf
-        <li>
-          <button class="button-item">Logout</button>
-        </li>
-      </form>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Registration</a></li>
+      <li><a href="#">Login</a></li>
     </ul>
   </nav>
   <div class="nav_title">
@@ -223,61 +202,16 @@ img {
       <span class="menu_line--middle"></span>
       <span class="menu_line--bottom"></span>
     </div>
-@else
-  <nav class="nav" id="nav">
-    <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/register">Registrastion</a>
-        </li>
-      <li><a href="/login">Login</a></li>
-    </ul>
-  </nav>
-  <div class="nav_title">
-    <div class="menu" id="menu">
-      <span class="menu_line--top"></span>
-      <span class="menu_line--middle"></span>
-      <span class="menu_line--bottom"></span>
-    </div>
-@endif
     <h1 class="title_item">Rese</h1>
   </div>
 
-  <div class="search_area">
-    <form action="/" method="POST">
-      @csrf
-      <div class="search_area_item">
-        <select id="area_id" name="area_id"  class="area_name" value="area_id">
-          <option>All area</option>
-          @foreach($areas as $area)
-          <option class="name-item" value="{{$area->id}}">
-            {{$area->area_name}}
-          </option>
-          @endforeach
-        </select>
-        <select id="genru_id" name="genru_id" class="genru_name" value="genru_id">
-          <option>All genru</option>
-          @foreach($genrus as $genru)
-          <option class="name-item" value="{{$genru->id}}">
-            {{$genru->genru_name}}
-          </option>
-          @endforeach
-        </select>
-          <input type="search" name="input" class="search_text_area" placeholder="search...">
-          <button class="searchbutton">search</button>
-      </div>
-    </form>
-  </div>
-</div>
 
 @section('content')
-<div class="login-area">
 @if (Auth::check())
-  <p>ログイン中ユーザー： {{$user->name . '　メール： ' . $user->email . ''}}</p>
-  @else
-  <p>ログインしてください。 (<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
+<p>ログイン中ユーザー： {{$user->name . '　メール' . $user->email . ''}}</p>
+@else
+<p>ログインしてください。 (<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
 @endif
-</div>
-
 <div class="card_group">
     @if (@isset($shops))
     @foreach ($shops as $shop)

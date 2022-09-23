@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
-use App\Models\Reserve;
-Use App\Models\User;
+Use App\Models\Favorite;
 use App\Models\Area;
 use App\Models\Genru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ShopRequest;
 
 class ShopController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
+
         $shops = Shop::all();
         $areas = Area::all();
         $genrus = Genru::all();
@@ -24,9 +26,10 @@ class ShopController extends Controller
             'areas' => $areas,
             'genrus' => $genrus,
             'input' => $request->input,
+            'user' => $user
         ];
 
-        return view('index', $param, ['shops' => $shops],['input' => '']);
+        return view('index', $param, ['shops' => $shops, 'input' => '']);
     }
 
 
@@ -35,25 +38,32 @@ class ShopController extends Controller
         $areas = Area::get();
         $genrus = Genru::get();
         $shops = Shop::get();
+        $shops = Shop::with('area', 'genru')->get();
+
+        $input = htmlspecialchars($_POST['input'], ENT_QUOTES);
+        $area_id = htmlspecialchars($_POST['area_id'], ENT_QUOTES);
+        $genru_id = htmlspecialchars($_POST['genru_id'], ENT_QUOTES);
 
         $query = Shop::query();
 
-        if($request->input){
-            $query->where('shop_name', 'LIKE BINARY', "%{$request->input}%");
+        if($input){
+            $query->where('shop_name', 'LIKE BINARY', "%{$input}%");
         }
-        if($request->area_id){
-            $query->where('area_id', $request->area_id)
-            ->orwhere('genru_id', $request->genru_id);
+        elseif($input == "" && $area_id && $genru_id == "All genru"){
+            $query->where('area_id', $area_id);
         }
-        if($request->genru_id ||$request->area_id){
-            $query->where('genru_id', $request->genru_id)
-            ->orwhere('area_id', $request->area_id);
+        elseif($input == "" && $area_id == "All area" && $genru_id){
+            $query->where('genru_id', $genru_id);
         }
-        if($request->area_id && $request->genru_id){
-            $query->where('area_id', $request->area_id && 'genru_id', $request->genru_id);
+        elseif($input == "" && $area_id && $genru_id){
+            $query->where('area_id', $area_id)->where('genru_id', $genru_id);
         }
 
         $shops = $query->get();
+
+        if($input == "" && $area_id == "All area" && $genru_id == "All genru"){
+            $shops = shop::get();
+        }
 
         $param = [
             'input' => $request->input,
@@ -62,7 +72,7 @@ class ShopController extends Controller
             'shops' => $shops,
         ];
 
-        return view('index', $param);
+        return view('index', $param, ['shops' => $shops]);
     }
     
     public function done()
