@@ -4,29 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 Use App\Models\Favorite;
+use App\Models\User;
 use App\Models\Area;
 use App\Models\Genru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ShopRequest;
+use App\Http\Requests\FavoriteRequest;
 
 class ShopController extends Controller
 {
     public function index(Request $request)
     {
         $user = Auth::user();
-
+        $id = Auth::id();
+        $favorite = Favorite::get();
         $shops = Shop::all();
         $areas = Area::all();
         $genrus = Genru::all();
-        $shops = Shop::with('area', 'genru')->get();
+        $shops = Shop::with('area', 'genru','favorite')->get();
+
+
 
         $param = [
             'shops' => $shops,
             'areas' => $areas,
             'genrus' => $genrus,
             'input' => $request->input,
-            'user' => $user
+            'user' => $user,
+            'favorite' => $favorite,
         ];
 
         return view('index', $param, ['shops' => $shops, 'input' => '']);
@@ -35,8 +41,10 @@ class ShopController extends Controller
 
     public function search(Request $request)
     {
+        $user = Auth::user();
         $areas = Area::get();
         $genrus = Genru::get();
+        $favorite = Favorite::get();
         $shops = Shop::get();
         $shops = Shop::with('area', 'genru')->get();
 
@@ -70,10 +78,13 @@ class ShopController extends Controller
             'areas' => $areas,
             'genrus' => $genrus,
             'shops' => $shops,
+            'user' => $user,
+            'favorite' => $favorite
         ];
 
         return view('index', $param, ['shops' => $shops]);
     }
+
     
     public function done()
     {
@@ -83,7 +94,6 @@ class ShopController extends Controller
     {
         return view('thanks');
     }
-
 
 
     public function file(Request $request)

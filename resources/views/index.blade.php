@@ -104,6 +104,8 @@
   font-family: serif;
   color: blue;
 }
+
+
 .search_area{
   background-color: white;
   box-shadow: 0 1.2px 1px 0px rgba(0,0,0,0.2);
@@ -153,9 +155,11 @@
 
 
 .login-area{
-  width: 100%;
-  text-align: center;
+  width: 88%;
+  margin: 0 auto;
 }
+
+
 .card_group{
   width: 90%;
   display: flex;
@@ -207,7 +211,7 @@ img {
 @if (Auth::check())
   <nav class="nav" id="nav">
     <ul>
-      <li><a href="/home">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="/mypage">Mypage</a></li>
       <form action="{{route('logout')}}" method="POST">
       @csrf
@@ -226,7 +230,7 @@ img {
 @else
   <nav class="nav" id="nav">
     <ul>
-      <li><a href="/home">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="/register">Registrastion</a>
         </li>
       <li><a href="/login">Login</a></li>
@@ -272,9 +276,9 @@ img {
 @section('content')
 <div class="login-area">
 @if (Auth::check())
-  <p>ログイン中ユーザー： {{$user->name . '　メール： ' . $user->email . ''}}</p>
+  <p>こんにちは {{$user->name . 'さん'}}</p>
   @else
-  <p>ログインしてください。 (<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
+  <p>ゲストさん　ログインお願いします。</p>
 @endif
 </div>
 
@@ -294,6 +298,21 @@ img {
             #{{$shop->genru->genru_name}}
           </p>
           <button class="detailbutton">詳しく見る</button>
+          @if(Auth::check())
+            @if($favorite)
+              <form action="/delete" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{$shop->id}}">
+                <button>お気に入り解除</button>
+              </form>
+              @else
+              <form action="/favorite" method="POST">
+                @csrf
+                <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                <button>お気に入り追加</button>
+              </form>
+            @endif
+          @endif
         </div>
       </div>
     </div>

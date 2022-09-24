@@ -27,5 +27,7 @@ class Shop extends Model
     public function genru(){
         return $this->belongsTo('App\Models\Genru');
     }
-
+    public function favorite(){
+        return $this->hasMany('App\Models\Favorite');
+    }
 }

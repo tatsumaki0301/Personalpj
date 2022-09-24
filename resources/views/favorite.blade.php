@@ -28,6 +28,16 @@
     font-size: 25px;
     font-weight: bold;
     font-family: serif;
+
+  }
+  .button-item{
+    border: none;
+    background-color: WhiteSmoke;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: serif;
+    color: blue;
+    cursor: hand;
   }
   .menu{
     display: inline-block;
@@ -94,6 +104,8 @@
   font-family: serif;
   color: blue;
 }
+
+
 .search_area{
   background-color: white;
   box-shadow: 0 1.2px 1px 0px rgba(0,0,0,0.2);
@@ -140,6 +152,13 @@
   cursor: hand;
   margin: 0 auto;
 }
+
+.login-area{
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
+
 
 .card_group{
   width: 90%;
@@ -189,11 +208,17 @@ img {
 
 @section('nav')
 <div class="nav_area">
+@if (Auth::check())
   <nav class="nav" id="nav">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Registration</a></li>
-      <li><a href="#">Login</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/mypage">Mypage</a></li>
+      <form action="{{route('logout')}}" method="POST">
+      @csrf
+        <li>
+          <button class="button-item">Logout</button>
+        </li>
+      </form>
     </ul>
   </nav>
   <div class="nav_title">
@@ -202,16 +227,34 @@ img {
       <span class="menu_line--middle"></span>
       <span class="menu_line--bottom"></span>
     </div>
+@else
+  <nav class="nav" id="nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Registrastion</a>
+        </li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
+  <div class="nav_title">
+    <div class="menu" id="menu">
+      <span class="menu_line--top"></span>
+      <span class="menu_line--middle"></span>
+      <span class="menu_line--bottom"></span>
+    </div>
+@endif
     <h1 class="title_item">Rese</h1>
   </div>
 
 
 @section('content')
+
+<div class="login-area">
 @if (Auth::check())
-<p>ログイン中ユーザー： {{$user->name . '　メール' . $user->email . ''}}</p>
-@else
-<p>ログインしてください。 (<a href="/login">ログイン</a> | <a href="/register">登録</a>)</p>
+  <p>{{$user->name . 'さん'}}</p>
 @endif
+</div>
+
 <div class="card_group">
     @if (@isset($shops))
     @foreach ($shops as $shop)
@@ -228,6 +271,21 @@ img {
             #{{$shop->genru->genru_name}}
           </p>
           <button class="detailbutton">詳しく見る</button>
+          @if(Auth::check())
+            @if(empty($favorite))
+            <form action="/delete" method="POST">
+              @csrf
+              <input type="hidden" name="shop_id" value="{{$shop->id}}">
+              <button>お気に入り解除</button>
+            </form>
+            @else
+            <form action="/favorite" method="POST">
+              @csrf
+              <input type="hidden" name="shop_id" value="{{$shop->id}}">
+              <button>お気に入り</button>
+            </form>
+            @endif
+          @endif
         </div>
       </div>
     </div>

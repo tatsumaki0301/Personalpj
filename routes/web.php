@@ -7,9 +7,12 @@ use App\Http\Controllers\FavoriteController;
 
 Route::get('/', [ShopController::class, 'index']);
 Route::post('/', [ShopController::class, 'search']);
+Route::POST('/favorite', [FavoriteController::class, 'like']);
+Route::post('/delete', [FavoriteController::class, 'remove']);
+
 
 Route::get('/mypage', [FavoriteController::class, 'favorite']);
-Route::post('/mypage', [FavoriteController::class, 'delete']);
+
 
 Route::get('/done', [ShopController::class, 'done']);
 Route::get('/thanks', [ShopController::class, 'thanks']);
