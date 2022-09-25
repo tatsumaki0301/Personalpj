@@ -303,19 +303,21 @@ img {
             <button class="detailbutton">詳しく見る</button>
           </form>
           @if(Auth::check())
-            @if($favorites = (auth()->user()->id && $shop->id))
-              <form action="/delete" method="POST">
-                @csrf
-                <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                <button>お気に入り解除</button>
-              </form>
-              @else
-              <form action="/favorite" method="POST">
-                @csrf
-                <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                <button>お気に入り追加</button>
-              </form>
-            @endif
+            @foreach($favorites as $favorite)
+              @if($favorite->shop_id && $favorite->user_id)
+                <form action="/delete" method="POST">
+                  @csrf
+                  <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                  <button>お気に入り解除</button>
+                </form>
+                @else
+                <form action="/favorite" method="POST">
+                  @csrf
+                  <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                  <button>お気に入り追加</button>
+                </form>
+              @endif
+            @endforeach
           @endif
         </div>
       </div>

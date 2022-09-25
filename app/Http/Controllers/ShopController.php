@@ -18,7 +18,7 @@ class ShopController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
-        $favorites = Favorite::get();
+        $favorites = User::with('favorite')->get();
         $shops = Shop::all();
         $areas = Area::all();
         $genrus = Genru::all();
