@@ -20,4 +20,6 @@ class Favorite extends Model
     public function shop(){
         return $this->belongsTo('App\Models\Shop');
     }
+
+    
 }

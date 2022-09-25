@@ -30,4 +30,8 @@ class Shop extends Model
     public function favorite(){
         return $this->hasMany('App\Models\Favorite');
     }
+    public function reserve(){
+        return $this->hasMany('App\Models\Reserve');
+    }
+
 }

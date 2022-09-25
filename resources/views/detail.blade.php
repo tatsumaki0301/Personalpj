@@ -245,32 +245,6 @@ img {
 @endif
     <h1 class="title_item">Rese</h1>
   </div>
-
-  <div class="search_area">
-    <form action="/" method="POST">
-      @csrf
-      <div class="search_area_item">
-        <select id="area_id" name="area_id"  class="area_name" value="area_id">
-          <option>All area</option>
-          @foreach($areas as $area)
-          <option class="name-item" value="{{$area->id}}">
-            {{$area->area_name}}
-          </option>
-          @endforeach
-        </select>
-        <select id="genru_id" name="genru_id" class="genru_name" value="genru_id">
-          <option>All genru</option>
-          @foreach($genrus as $genru)
-          <option class="name-item" value="{{$genru->id}}">
-            {{$genru->genru_name}}
-          </option>
-          @endforeach
-        </select>
-          <input type="search" name="input" class="search_text_area" placeholder="search...">
-          <button class="searchbutton">search</button>
-      </div>
-    </form>
-  </div>
 </div>
 
 @section('content')
@@ -283,44 +257,25 @@ img {
 </div>
 
 <div class="card_group">
-    @if (@isset($shops))
-    @foreach ($shops as $shop)
     <div class="wrapper">
       <div class="card">
-        <div class="content-img">
-          <img src="{{ Storage::url($shop->image_path)}}" width="50%">
-        </div>
         <div class="text-box">
           <h2 class="title">{{$shop->shop_name}}
           </h2>
+        </div>
+        <div class="content-img">
+          <img src="{{ Storage::url($shop->image_path)}}" width="50%">
+        </div>
+        <div>
           <p class="date">
             #{{$shop->area->area_name}}
             #{{$shop->genru->genru_name}}
           </p>
-          <form action="detail" method="POST">
-          @csrf
-            <input type="hidden" name="shop_id" value="{{$shop->id}}">
-            <button class="detailbutton">詳しく見る</button>
-          </form>
-          @if(Auth::check())
-            @if($favorites = (auth()->user()->id && $shop->id))
-              <form action="/delete" method="POST">
-                @csrf
-                <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                <button>お気に入り解除</button>
-              </form>
-              @else
-              <form action="/favorite" method="POST">
-                @csrf
-                <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                <button>お気に入り追加</button>
-              </form>
-            @endif
-          @endif
+          <p>
+            {{$shop->shop_content}}
+          </p>
         </div>
       </div>
     </div>
-    @endforeach
 </div>
-@endif
 @endsection

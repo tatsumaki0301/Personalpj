@@ -18,13 +18,11 @@ class ShopController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
-        $favorite = Favorite::get();
+        $favorites = Favorite::get();
         $shops = Shop::all();
         $areas = Area::all();
         $genrus = Genru::all();
         $shops = Shop::with('area', 'genru','favorite')->get();
-
-
 
         $param = [
             'shops' => $shops,
@@ -32,7 +30,7 @@ class ShopController extends Controller
             'genrus' => $genrus,
             'input' => $request->input,
             'user' => $user,
-            'favorite' => $favorite,
+            'favorites' => $favorites,
         ];
 
         return view('index', $param, ['shops' => $shops, 'input' => '']);
