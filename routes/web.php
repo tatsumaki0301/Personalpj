@@ -4,10 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\ReserveController;
+
 
 
 Route::get('/', [ShopController::class, 'index']);
 Route::post('/', [ShopController::class, 'search']);
+
+
+Route::GET('/detail', [DetailController::class, 'detail']);
+Route::POST('/reserve', [ReserveController::class, 'create']);
 
 
 
@@ -17,8 +23,6 @@ Route::post('/delete', [FavoriteController::class, 'remove']);
 
 
 
-Route::post('/detail', [DetailController::class, 'detail']);
-Route::post('/detail', [DetailController::class, 'search']);
 
 
 

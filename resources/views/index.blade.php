@@ -196,6 +196,11 @@ img {
   font-size: 15px;
   margin-top: -15px;
 }
+.detail-favorite{
+  display: flex;
+  justify-content: space-between;
+  margin: auto 10px;
+}
 .detailbutton{
   padding: 5px 15px;
   background-color: blue;
@@ -274,55 +279,55 @@ img {
 </div>
 
 @section('content')
-<div class="login-area">
-@if (Auth::check())
-  <p>こんにちは {{$user->name . 'さん'}}</p>
-  @else
-  <p>ゲストさん　ログインお願いします。</p>
-@endif
-</div>
+  <div class="login-area">
+  @if (Auth::check())
+    <p>こんにちは {{$user->name . 'さん'}}</p>
+    @else
+    <p>ゲストさん　ログインお願いします。</p>
+  @endif
+  </div>
 
-<div class="card_group">
-    @if (@isset($shops))
-    @foreach ($shops as $shop)
-    <div class="wrapper">
-      <div class="card">
-        <div class="content-img">
-          <img src="{{ Storage::url($shop->image_path)}}" width="50%">
-        </div>
-        <div class="text-box">
-          <h2 class="title">{{$shop->shop_name}}
-          </h2>
-          <p class="date">
-            #{{$shop->area->area_name}}
-            #{{$shop->genru->genru_name}}
-          </p>
-          <form action="detail" method="POST">
-          @csrf
-            <input type="hidden" name="shop_id" value="{{$shop->id}}">
-            <button class="detailbutton">詳しく見る</button>
-          </form>
-          @if(Auth::check())
-            @foreach($favorites as $favorite)
-              @if($favorite->shop_id && $favorite->user_id)
-                <form action="/delete" method="POST">
+  <div class="card_group">
+      @if (@isset($shops))
+      @foreach ($shops as $shop)
+      <div class="wrapper">
+        <div class="card">
+          <div class="content-img">
+            <img src="{{ Storage::url($shop->image_path)}}" width="50%">
+          </div>
+          <div class="text-box">
+            <h2 class="title">{{$shop->shop_name}}
+            </h2>
+            <p class="date">
+              #{{$shop->area->area_name}}
+              #{{$shop->genru->genru_name}}
+            </p>
+          </div>
+          <div class="detail-favorite">
+            <form action="detail" method="GET">
+            @csrf
+              <input type="hidden" name="shop_id" value="{{$shop->id}}">
+              <button class="detailbutton">詳しく見る</button>
+            </form>
+            @if(Auth::check())
+                @if($shops && $id)
+                  <form action="/delete" method="POST">
                   @csrf
-                  <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                  <button>お気に入り解除</button>
-                </form>
+                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                      <button>お気に入り解除</button>
+                  </form>
                 @else
-                <form action="/favorite" method="POST">
+                  <form action="/favorite" method="POST">
                   @csrf
-                  <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                  <button>お気に入り追加</button>
-                </form>
-              @endif
-            @endforeach
-          @endif
+                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                      <button>お気に入り追加</button>
+                  </form>
+                @endif
+            @endif
+          </div>
         </div>
       </div>
-    </div>
-    @endforeach
-</div>
-@endif
+      @endforeach
+      @endif
+  </div>
 @endsection

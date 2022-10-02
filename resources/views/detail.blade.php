@@ -4,6 +4,10 @@
     text-decoration: none;
     color: blue;
   }
+  .main_area{
+    display: flex;
+    margin: 0 auto;
+  }
   .nav_area{
     width: 90%;
     margin: 0 auto;
@@ -105,96 +109,50 @@
   color: blue;
 }
 
-
-.search_area{
-  background-color: white;
-  box-shadow: 0 1.2px 1px 0px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  width: 40%;
-  height: 50px;
-  margin: 20px 80px 0 0;
-}
-.search_area_item{
-  margin: 10px auto;
-  width: 100%;
-  text-align: center;
-}
-.area_name{
-  width: 20%;
-  border: none;
-  border-right: 1px solid grey;
-  padding: 5px;
-  color: grey;
-}
-.genru_name{
-  width: 20%;
-  border: none;
-  border-right: 1px solid grey;
-  padding: 5px;
-  color: grey;
-}
-.name-item{
-  color: black;
-}
-.search_text_area{
-  width: 30%;
-  padding: 5px;
-  border: 0.5px solid lightgrey;
-  border-radius: 5px;
-  color: grey;
-}
-.searchbutton{
-  background-color: white;
-  color: grey;
-  border-color: lightgrey;
-  border-radius: 5px;
-  padding: 5px;
-  cursor: hand;
-  margin: 0 auto;
-}
-
-
 .login-area{
-  width: 88%;
-  margin: 0 auto;
+  margin-left: 90px;
 }
-
 
 .card_group{
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 0 auto;
+  margin: 80px 0 0 -120px;
 }
 .wrapper{
-  width: 21%;
-  margin: 20px auto 0;
+  width: 60%;
+}
+.text-box {
+  display: flex;
+}
+.return-item-area{
+  margin-top: 23px;
+}
+.return-item{
+  background-color: white;
+  color: grey;
+  border-color: grey;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px;
+  border-radius: 3px;
+  padding: 0px 5px;
+}
+.title-area{
+  margin: auto 10px;
+}
+.title{
+}
+.card {
 }
 img {
   width: 100%;
-  border-radius: 10px 10px 0 0;
-}
-.card {
-  cursor: pointer;
-  border-radius: 10px;
-  background-color: white;
-  margin: 10px -10px;
-  box-shadow: 1.2px 1.2px 0 1px rgba(0,0,0,0.2);
-}
-.text-box {
-  padding: 15px;
-}
-.title{
-  margin-top: -10px;
 }
 .content-img {
   text-align: center;
 }
-.date {
+.date-item {
   font-size: 15px;
-  margin-top: -15px;
+  font-weight: 600;
+}
+.content-item{
+  font-weight: 600;
 }
 .detailbutton{
   padding: 5px 15px;
@@ -202,6 +160,76 @@ img {
   color: white;
   border-radius: 5px;
   border: 1px solid white;
+}
+.reserve_area{
+  width: 80%;
+  height: 100%;
+  background-color: dodgerblue;
+  margin: 0px 100px 0 -100px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 1px rgba(0,0,0,0.2);
+
+}
+.reserve_content_area{
+  margin: 0 30px;
+}
+.reserve_title{
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+}
+.date_area{
+  width: 50%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.time_area{
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  margin: 15px auto;
+}
+.user_number_area{
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.reservebutton_area{
+  text-align: center;
+  padding: 20px;
+  background-color: blue;
+  border-radius: 0 0 10px 10px;
+  margin: 50px auto 0;
+}
+.reserve_detail_area{
+  background-color: dodgerBlue;
+  margin-top: 50px;
+  border: none;
+  border-radius: 10px;
+}
+.reserve_detail_teble{
+  border: 5px solid dodgerblue;
+  border-radius: 10px;
+  background-color: cornflowerblue;
+}
+.reserve_detail_th{
+  padding: 10px;
+  text-align: left;
+  color: white;
+}
+.reserve_detail_td{
+  color:white;
+  width: 100%;
+  padding-left: 50px;
+}
+.reservebutton{
+  width: 100%;
+  background-color: blue;
+  border: none;
+  color: white;
 }
 </style>
 @section('title', 'Rese')
@@ -248,34 +276,103 @@ img {
 </div>
 
 @section('content')
-<div class="login-area">
-@if (Auth::check())
-  <p>こんにちは {{$user->name . 'さん'}}</p>
-  @else
-  <p>ゲストさん　ログインお願いします。</p>
-@endif
-</div>
+<div class="main_area">
+  <div class="login-area">
+  @if (Auth::check())
+    <p>こんにちは {{$user->name . 'さん'}}</p>
+    @else
+    <p>ゲストさん　ログインお願いします。</p>
+  @endif
+  </div>
 
-<div class="card_group">
+  <div class="card_group">
+    @if (@isset($shops))
+    @foreach ($shops as $shop)
     <div class="wrapper">
-      <div class="card">
-        <div class="text-box">
+      <div class="text-box">
+        <div class="return-item-area">
+          <a href="/" class="return-item"><</a>
+        </div>
+        <div class="title-area">
           <h2 class="title">{{$shop->shop_name}}
           </h2>
         </div>
+      </div>
+      <div class="card">
         <div class="content-img">
           <img src="{{ Storage::url($shop->image_path)}}" width="50%">
         </div>
         <div>
-          <p class="date">
+          <p class="date-item">
             #{{$shop->area->area_name}}
             #{{$shop->genru->genru_name}}
           </p>
-          <p>
-            {{$shop->shop_content}}
-          </p>
+        </div>
+        <div class="content-item">
+          {{$shop->shop_content}}
         </div>
       </div>
+      @endforeach
+      @endif
     </div>
+  </div>
+  <div class="reserve_area">
+    @if (Auth::check())
+    <div class="reserve_content_area">
+      <div>
+        <p class="reserve_title">予約</p>
+      </div>
+      <form action="/reserve" method="POST">
+        @csrf
+        <div>
+          <input type="hidden" name="user_id" value="{{$id}}">
+          <input type="hidden" name="shop_id" value="{{$shop->id}}">
+          <label for="datetime">
+          <input class="date_area" type="date" id="datetime" name="date" value="yyyy-MM-dd" required>
+        </div>
+        <div>
+          <select class="time_area" id="time" name="time" required>
+            <option></option>
+            @foreach($ret as $ret)
+            <option value="{{$ret}}">{{$ret}}</option>
+            @endforeach
+          </select>
+          </label>
+        </div>
+          <select class="user_number_area" id="user_number" name="user_number" required>
+              <option></option>
+              @for($j=1; $j <= 10; $j++)
+              <option value="{{$j}}">{{$j}}人</option>
+              @endfor
+          </select>
+        <div class="reserve_detail_area">
+        @foreach($reserves as $reserve)
+          <table class="reserve_detail_teble">
+            <tr>
+              <th class="reserve_detail_th">name</th>
+              <td class="reserve_detail_td">{{$reserve->shop->shop_name}}</td>
+            </tr>
+            <tr>
+              <th class="reserve_detail_th">date</th>
+              <td class="reserve_detail_td">{{substr($reserve->datetime,0,10)}}</td>
+            </tr>
+            <tr>
+              <th class="reserve_detail_th">time</th>
+              <td class="reserve_detail_td">{{substr($reserve->datetime,10,6)}}</td>
+            </tr>
+            <tr>
+              <th class="reserve_detail_th">number</th>
+              <td class="reserve_detail_td">{{$reserve->user_number}}人</td>
+            </tr>
+          </table>
+        @endforeach
+        </div>
+    </div>
+        <div class="reservebutton_area">
+          <button class="reservebutton">予約する</button>
+        </div>
+      </form>
+      @endif
+  </div>
 </div>
 @endsection

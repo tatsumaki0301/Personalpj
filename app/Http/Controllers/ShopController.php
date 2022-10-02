@@ -18,11 +18,11 @@ class ShopController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
-        $favorites = User::with('favorite')->get();
-        $shops = Shop::all();
         $areas = Area::all();
         $genrus = Genru::all();
-        $shops = Shop::with('area', 'genru','favorite')->get();
+        $shops = Shop::with(['area', 'genru','Favorite'=>function($query){
+            $query->where('user_id')->where('shop_id');
+        }])->get();
 
         $param = [
             'shops' => $shops,
@@ -30,7 +30,7 @@ class ShopController extends Controller
             'genrus' => $genrus,
             'input' => $request->input,
             'user' => $user,
-            'favorites' => $favorites,
+            'id' => $id,
         ];
 
         return view('index', $param, ['shops' => $shops, 'input' => '']);
@@ -40,11 +40,11 @@ class ShopController extends Controller
     public function search(Request $request)
     {
         $user = Auth::user();
+        $id = Auth::id();
         $areas = Area::get();
         $genrus = Genru::get();
-        $favorite = Favorite::get();
         $shops = Shop::get();
-        $shops = Shop::with('area', 'genru')->get();
+        $shops = Shop::with('area', 'genru','favorite')->get();
 
         $input = htmlspecialchars($_POST['input'], ENT_QUOTES);
         $area_id = htmlspecialchars($_POST['area_id'], ENT_QUOTES);
@@ -77,9 +77,8 @@ class ShopController extends Controller
             'genrus' => $genrus,
             'shops' => $shops,
             'user' => $user,
-            'favorite' => $favorite
+            'id' => $id,
         ];
-
         return view('index', $param, ['shops' => $shops]);
     }
 
