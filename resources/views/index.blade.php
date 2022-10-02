@@ -207,6 +207,7 @@ img {
   color: white;
   border-radius: 5px;
   border: 1px solid white;
+  cursor: hand;
 }
 </style>
 @section('title', 'Rese')
@@ -310,7 +311,8 @@ img {
               <button class="detailbutton">詳しく見る</button>
             </form>
             @if(Auth::check())
-                @if($shops && $id)
+                @if($user->where('user_id', auth()->id() && $shop->where('id', $shop->id)))
+
                   <form action="/delete" method="POST">
                   @csrf
                     <input type="hidden" name="shop_id" value="{{$shop->id}}">

@@ -153,20 +153,46 @@
   margin: 0 auto;
 }
 
-.login-area{
-  width: 100%;
-  text-align: center;
-  margin-top: 40px;
+
+.main_area{
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
 }
 
 
+.login-area{
+  width: 100%;
+  text-align: start;
+  margin-top: -30px;
+}
+.login_name{
+  width: 90%;
+  margin: 0 auto;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.favorite_area{
+  width: 100%;
+  margin: 0 auto;
+}
+.favorite_area_item{
+}
 .card_group{
   width: 90%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 0 auto;
+  margin: 20px auto 0;
+}
+.favorite_title{
+  margin: 20 auto 0;
+  width: 90%;
+  font-size: 25px;
+  font-weight: bold;
 }
 .wrapper{
   width: 21%;
@@ -196,12 +222,87 @@ img {
   font-size: 15px;
   margin-top: -15px;
 }
+.detail-favorite{
+  display: flex;
+  justify-content: space-between;
+  margin: auto 10px;
+}
 .detailbutton{
   padding: 5px 15px;
   background-color: blue;
   color: white;
   border-radius: 5px;
   border: 1px solid white;
+  cursor: hand;
+}
+
+
+.reserve_title_items{
+  font-size: 25px;
+  font-weight: bold;
+}
+.reserve_area{
+  width: 50%;
+}
+.reserve_detail_area{
+  background-color: #e6e6e6;
+  margin-top: 50px;
+  border: none;
+  border-radius: 10px;
+}
+.reserve_content_area{
+  margin: 0 30px;
+}
+.date_area{
+  width: 50%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.time_area{
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  margin: 15px auto;
+}
+.reserve_count_text{
+  color: white;
+  font-weight: lighter;
+}
+.user_number_area{
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.reserve_detail_teble{
+  width: 95%;
+  margin: 0 auto;
+  border: 5px solid #e6e6e6;
+  border-radius: 10px;
+  background-color: blue;
+}
+.reserve_detail_th{
+  padding: 10px;
+  text-align: left;
+  color: white;
+}
+.reserve_detail_td{
+  color:white;
+  width: 100%;
+  padding-left: 50px;
+}
+.delete_button_area{
+  text-align: end;
+}
+.delete_button{
+  background-color: blue;
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: hand;
 }
 </style>
 @section('title', 'Rese')
@@ -245,51 +346,102 @@ img {
 @endif
     <h1 class="title_item">Rese</h1>
   </div>
+</div>
 
 
 @section('content')
 
+
+<div class="main_area">
+  <div class="reserve_area">
+      <p class="reserve_title_items">予約状況</p>
+    <div class="reserve_detail_area">
+      @foreach($reserves as $key=>$reserve)
+          <table class="reserve_detail_teble">
+            <tr>
+              <th class="reserve_count_text">予約{{$key+1}}</th>
+              <form action="/remove" method="POST">
+                @csrf
+              <td class="delete_button_area">
+                <input type="hidden" name="deleteId" value="{{$reserve->id}}">
+                <button class="delete_button">Ｘ</button>
+              </td>
+              </form>
+            </tr>
+            <tr>
+              <th class="reserve_detail_th">name</th>
+              <td class="reserve_detail_td">
+                {{$reserve->shop->shop_name}}</td>
+            </tr>
+            <tr>
+              <th class="reserve_detail_th">date</th>
+              <td class="reserve_detail_td">{{substr($reserve->datetime,0,10)}}</td>
+            </tr>
+            <tr>
+              <th class="reserve_detail_th">time</th>
+              <td class="reserve_detail_td">{{substr($reserve->datetime,10,6)}}</td>
+            </tr>
+            <tr>
+              <th class="reserve_detail_th">number</th>
+              <td class="reserve_detail_td">{{$reserve->user_number}}人</td>
+            </tr>
+          </table>
+      @endforeach
+    </div>
+  </div>
+    <div class="favorite_area">
 <div class="login-area">
-@if (Auth::check())
-  <p>{{$user->name . 'さん'}}</p>
-@endif
+  @if (Auth::check())
+    <p class="login_name">{{$user->name . 'さん'}}</p>
+  @endif
 </div>
 
-<div class="card_group">
-    @if (@isset($shops))
-    @foreach ($shops as $shop)
-    <div class="wrapper">
-      <div class="card">
-        <div class="content-img">
-          <img src="{{ Storage::url($shop->image_path)}}" width="50%">
+      <div class="favorite_area_item">
+        <p class="favorite_title">お気に入り店舗</p>
+        <div class="card_group">
+            @if (@isset($shops))
+            @foreach ($shops as $shop)
+            <div class="wrapper">
+              <div class="card">
+                <div class="content-img">
+                  <img src="{{ Storage::url($shop->image_path)}}" width="50%">
+                </div>
+                <div class="text-box">
+                  <h2 class="title">{{$shop->shop_name}}
+                  </h2>
+                  <p class="date">
+                    #{{$shop->area->area_name}}
+                    #{{$shop->genru->genru_name}}
+                  </p>
+                </div>
+                <div class="detail-favorite">
+                  <form action="detail" method="GET">
+                  @csrf
+                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                    <button class="detailbutton">詳しく見る</button>
+                  </form>
+                  @if(Auth::check())
+                      @if($shops && $id)
+                        <form action="/delete" method="POST">
+                        @csrf
+                          <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                            <button>お気に入り解除</button>
+                        </form>
+                      @else
+                        <form action="/favorite" method="POST">
+                        @csrf
+                          <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                            <button>お気に入り追加</button>
+                        </form>
+                      @endif
+                  @endif
+                </div>
+              </div>
+            </div>
+            @endforeach
         </div>
-        <div class="text-box">
-          <h2 class="title">{{$shop->shop_name}}
-          </h2>
-          <p class="date">
-            #{{$shop->area->area_name}}
-            #{{$shop->genru->genru_name}}
-          </p>
-          <button class="detailbutton">詳しく見る</button>
-          @if(Auth::check())
-            @if(empty($favorite))
-            <form action="/delete" method="POST">
-              @csrf
-              <input type="hidden" name="shop_id" value="{{$shop->id}}">
-              <button>お気に入り解除</button>
-            </form>
-            @else
-            <form action="/favorite" method="POST">
-              @csrf
-              <input type="hidden" name="shop_id" value="{{$shop->id}}">
-              <button>お気に入り</button>
-            </form>
-            @endif
-          @endif
-        </div>
+        @endif
       </div>
     </div>
-    @endforeach
 </div>
-@endif
 @endsection

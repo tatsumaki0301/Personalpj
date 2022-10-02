@@ -161,6 +161,7 @@ img {
   border-radius: 5px;
   border: 1px solid white;
 }
+
 .reserve_area{
   width: 80%;
   height: 100%;
@@ -168,7 +169,6 @@ img {
   margin: 0px 100px 0 -100px;
   border-radius: 10px;
   box-shadow: 3px 3px 0 1px rgba(0,0,0,0.2);
-
 }
 .reserve_content_area{
   margin: 0 30px;
@@ -230,6 +230,7 @@ img {
   background-color: blue;
   border: none;
   color: white;
+  cursor: hand;
 }
 </style>
 @section('title', 'Rese')
@@ -322,7 +323,7 @@ img {
       <div>
         <p class="reserve_title">予約</p>
       </div>
-      <form action="/reserve" method="POST">
+      <form action="/done" method="POST">
         @csrf
         <div>
           <input type="hidden" name="user_id" value="{{$id}}">

@@ -22,6 +22,15 @@ class ReserveController extends Controller
             'user_number'=> $request->user_number
         ];
         Reserve::create($form);
+        return view('done');
+    }
+
+    public function delete(Request $request)
+    {
+
+        Reserve::find($request->deleteId)->delete();
+
         return back();
     }
+
 }

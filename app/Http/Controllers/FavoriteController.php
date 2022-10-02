@@ -17,15 +17,19 @@ class FavoriteController extends Controller
     public function favorite(Request $request)
     {
         $user = Auth::user();
+        $id = Auth::id();
         $shops = Shop::get();
+        $reserves = Reserve::all();
         $favorite = Favorite::get();
         $favorite = Favorite::with('shop', 'user')->get();
 
         $param = 
         [
             'user' => $user,
+            'id' => $id,
             'shops' => $shops,
-            'favorite' => $favorite
+            'favorite' => $favorite,
+            'reserves' => $reserves, 
         ];
 
         return view('favorite', $param);

@@ -10,24 +10,19 @@ use App\Http\Controllers\ReserveController;
 
 Route::get('/', [ShopController::class, 'index']);
 Route::post('/', [ShopController::class, 'search']);
-
-
-Route::GET('/detail', [DetailController::class, 'detail']);
-Route::POST('/reserve', [ReserveController::class, 'create']);
-
-
-
-Route::get('/mypage', [FavoriteController::class, 'favorite']);
 Route::POST('/favorite', [FavoriteController::class, 'like']);
 Route::post('/delete', [FavoriteController::class, 'remove']);
 
 
+Route::GET('/detail', [DetailController::class, 'detail']);
+Route::POST('/done', [ReserveController::class, 'create']);
 
 
+Route::get('/mypage', [FavoriteController::class, 'favorite']);
+Route::POST('/remove', 
+[ReserveController::class, 'delete']);
 
 
-
-Route::get('/done', [ShopController::class, 'done']);
 Route::get('/thanks', [ShopController::class, 'thanks']);
 
 
