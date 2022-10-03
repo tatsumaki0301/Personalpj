@@ -4,10 +4,6 @@
     text-decoration: none;
     color: blue;
   }
-  .main_area{
-    display: flex;
-    margin: 0 auto;
-  }
   .nav_area{
     width: 90%;
     margin: 0 auto;
@@ -113,11 +109,16 @@
   margin-left: 90px;
 }
 
+  .main_area{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+  }
 .card_group{
-  margin: 80px 0 0 -120px;
+  width: 40%;
 }
 .wrapper{
-  width: 60%;
+  width: 100%;
 }
 .text-box {
   display: flex;
@@ -163,10 +164,9 @@ img {
 }
 
 .reserve_area{
-  width: 80%;
+  width: 40%;
   height: 100%;
   background-color: dodgerblue;
-  margin: 0px 100px 0 -100px;
   border-radius: 10px;
   box-shadow: 3px 3px 0 1px rgba(0,0,0,0.2);
 }
@@ -277,7 +277,6 @@ img {
 </div>
 
 @section('content')
-<div class="main_area">
   <div class="login-area">
   @if (Auth::check())
     <p>こんにちは {{$user->name . 'さん'}}</p>
@@ -286,6 +285,9 @@ img {
   @endif
   </div>
 
+
+
+<div class="main_area">
   <div class="card_group">
     @if (@isset($shops))
     @foreach ($shops as $shop)

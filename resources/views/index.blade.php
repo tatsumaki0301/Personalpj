@@ -311,8 +311,7 @@ img {
               <button class="detailbutton">詳しく見る</button>
             </form>
             @if(Auth::check())
-                @if($user->where('user_id', auth()->id() && $shop->where('id', $shop->id)))
-
+                @if($userId_favorite)
                   <form action="/delete" method="POST">
                   @csrf
                     <input type="hidden" name="shop_id" value="{{$shop->id}}">
