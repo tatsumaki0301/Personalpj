@@ -307,11 +307,11 @@ img {
           <div class="detail-favorite">
             <form action="detail" method="GET">
             @csrf
-              <input type="hidden" name="shop_id" value="{{$shop->id}}">
+            <input type="hidden" name="shop_id" value="{{$shop->id}}">
               <button class="detailbutton">詳しく見る</button>
             </form>
             @if(Auth::check())
-                @if($userId_favorite)
+                @if(Auth::user()->id === $shop->user_id && $shop->shop_id)
                   <form action="/delete" method="POST">
                   @csrf
                     <input type="hidden" name="shop_id" value="{{$shop->id}}">
@@ -320,6 +320,7 @@ img {
                 @else
                   <form action="/favorite" method="POST">
                   @csrf
+                    <input type="hidden" name="user_id" value="{{$shop->id}}">
                     <input type="hidden" name="shop_id" value="{{$shop->id}}">
                       <button>お気に入り追加</button>
                   </form>

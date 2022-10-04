@@ -35,7 +35,7 @@ class FavoriteController extends Controller
         return view('favorite', $param);
     }
 
-    public function like(Request $request)
+    public function like(favoriteRequest $request)
     {
         $favorite = $request->shop_id;
         $id = Auth::id();
