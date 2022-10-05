@@ -20,9 +20,13 @@ class ShopController extends Controller
         $id = Auth::id();
         $areas = Area::all();
         $genrus = Genru::all();
-        $shops = Shop::with('area', 'genru','favorite')->get();
+        $shops = Shop::with('area', 'genru')->with(
+            'favorite', function ($query){
+                $query->where('user_id', '=', Auth::id());
+            }
+            )->get();
 
-        $param = [
+            $param = [
             'shops' => $shops,
             'areas' => $areas,
             'genrus' => $genrus,

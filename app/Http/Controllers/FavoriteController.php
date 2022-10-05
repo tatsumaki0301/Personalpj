@@ -38,11 +38,13 @@ class FavoriteController extends Controller
     public function like(favoriteRequest $request)
     {
         $favorite = $request->shop_id;
+        $user_id = $request->user_id;
         $id = Auth::id();
+        $user_id = $id;
 
         $favorites = [
             'shop_id' => $favorite,
-            'user_id' => $id
+            'user_id' => $user_id,
         ];
 
         Favorite::create($favorites);
