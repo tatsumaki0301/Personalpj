@@ -303,7 +303,7 @@ img {
       </div>
       <div class="card">
         <div class="content-img">
-          <img src="{{ Storage::url($shop->image_path)}}" width="50%">
+          <img src="{{$shop->image_path}}" width="50%">
         </div>
         <div>
           <p class="date-item">

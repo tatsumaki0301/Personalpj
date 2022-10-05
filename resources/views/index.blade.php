@@ -294,7 +294,7 @@ img {
       <div class="wrapper">
         <div class="card">
           <div class="content-img">
-            <img src="{{ Storage::url($shop->image_path)}}" width="50%">
+            <img src="{{$shop->image_path}}" width="50%">
           </div>
           <div class="text-box">
             <h2 class="title">{{$shop->shop_name}}
