@@ -140,6 +140,9 @@
 
             <!-- Email Address -->
             <div style="display: flex;">
+                <img src="{{asset('img/mail.png')}}" 
+                style="width: 50px; margin: 30 -20 0 10;">
+
                 <x-label for="email" :value="__('email')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 60px;" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus style="border: none; border-bottom: 0.5px solid; border-radius: 0; margin-top: 20px; margin-right: 20px;" />
@@ -147,6 +150,10 @@
 
             <!-- Password -->
             <div class="mt-4" style="display: flex;">
+
+                <img src="{{asset('img/key2.png')}}" 
+                style="width: 40px; margin: 30 -15 0 15;">
+
                 <x-label for="password" :value="__('Password')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 100px;"  />
 
                 <x-input id="password" class="block mt-1 w-full"

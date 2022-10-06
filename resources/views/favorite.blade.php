@@ -303,6 +303,7 @@ img {
   border-radius: 20px;
   font-weight: bold;
   cursor: hand;
+  margin: 5 10 0 0;
 }
 </style>
 @section('title', 'Rese')
@@ -359,7 +360,9 @@ img {
       @foreach($reserves as $key=>$reserve)
           <table class="reserve_detail_teble">
             <tr>
-              <th class="reserve_count_text">予約{{$key+1}}</th>
+              <th class="reserve_count_text">
+              <img src="{{asset('img/tokei2.png')}}" style="width: 20px; margin: 0 5 -5 0;">
+              予約{{$key+1}}</th>
               <form action="/remove" method="POST">
                 @csrf
               <td class="delete_button_area">

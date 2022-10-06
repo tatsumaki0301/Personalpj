@@ -137,6 +137,10 @@
 
             <!-- Name -->
             <div style="display: flex;">
+
+                <img src="{{asset('img/jinbutu.png')}}" 
+                style="width: 65px; margin: 40 -20 0 3;">
+
                 <x-label for="name" :value="__('お名前'.  'Username')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 150px;"/>
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus style="border: none; border-bottom: 0.5px solid; border-radius: 0; margin-top: 20px; margin-right: 20px;" />
@@ -144,6 +148,10 @@
 
             <!-- Email Address -->
             <div class="mt-4" style="display: flex;">
+
+                <img src="{{asset('img/mail.png')}}" 
+                style="width: 50px; margin: 40 -20 0 10;">
+
                 <x-label for="email" :value="__('メールアドレス'.  'Email')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 150px;" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required style="border: none; border-bottom: 0.5px solid; border-radius: 0; margin-top: 20px; margin-right: 20px;" />
@@ -151,6 +159,10 @@
 
             <!-- Password -->
             <div class="mt-4" style="display: flex;">
+
+                <img src="{{asset('img/key2.png')}}" 
+                style="width: 40px; margin: 40 -15 0 15;">
+
                 <x-label for="password" :value="__('パスワード'.  'Password')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 150px;" />
 
                 <x-input id="password" class="block mt-1 w-full"
@@ -161,6 +173,10 @@
 
             <!-- Confirm Password -->
             <div class="mt-4" style="display: flex;">
+
+                <img src="{{asset('img/key2.png')}}" 
+                style="width: 40px; height: 40px; margin: 50 -15 0 15;">
+
                 <x-label for="password_confirmation" :value="__('確認用パスワード'.  'Confirm Password')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 150px;" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"

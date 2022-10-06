@@ -141,6 +141,7 @@
   padding: 5px;
   border: 0.5px solid lightgrey;
   border-radius: 5px;
+  border: none;
   color: grey;
 }
 .searchbutton{
@@ -148,9 +149,13 @@
   color: grey;
   border-color: lightgrey;
   border-radius: 5px;
-  padding: 5px;
+  border: none;
   cursor: hand;
   margin: 0 auto;
+}
+.musimegane{
+  width: 16px;
+  margin-bottom: -3px;
 }
 
 
@@ -272,8 +277,10 @@ img {
           </option>
           @endforeach
         </select>
+          <button class="searchbutton">
+            <img class="musimegane" src="{{asset('img/musimegane.png')}}" alt="">
+          </button>
           <input type="search" name="input" class="search_text_area" placeholder="search...">
-          <button class="searchbutton">search</button>
       </div>
     </form>
   </div>
@@ -311,7 +318,7 @@ img {
               <button class="detailbutton">詳しく見る</button>
             </form>
             @if(Auth::check())
-                @if($shop->favorite)
+                @if(auth()->user()->id && $shop->id)
                   <form action="/delete" method="POST">
                   @csrf
                     <input type="hidden" name="shop_id" value="{{$shop->id}}">
