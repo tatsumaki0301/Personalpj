@@ -235,6 +235,12 @@ img {
   border: 1px solid white;
   cursor: hand;
 }
+.heart_button{
+  border: none;
+  background-color: white;
+  width: 30px;
+  margin-right: 20px;
+}
 
 
 .reserve_title_items{
@@ -352,7 +358,6 @@ img {
 
 @section('content')
 
-
 <div class="main_area">
   <div class="reserve_area">
       <p class="reserve_title_items">予約状況</p>
@@ -392,59 +397,61 @@ img {
       @endforeach
     </div>
   </div>
-    <div class="favorite_area">
-<div class="login-area">
-  @if (Auth::check())
-    <p class="login_name">{{$user->name . 'さん'}}</p>
-  @endif
-</div>
+  
+  <div class="favorite_area">
+    <div class="login-area">
+      @if (Auth::check())
+        <p class="login_name">{{$user->name . 'さん'}}</p>
+      @endif
+    </div>
 
-      <div class="favorite_area_item">
-        <p class="favorite_title">お気に入り店舗</p>
-        <div class="card_group">
-            @if (@isset($shops))
-            @foreach ($shops as $shop)
+    <div class="favorite_area_item">
+      <p class="favorite_title">お気に入り店舗</p>
+      <div class="card_group">
+        @if (@isset($favorite))
+          @foreach($favorite as $favorite)
             <div class="wrapper">
               <div class="card">
                 <div class="content-img">
-                  <img src="{{$shop->image_path}}" width="50%">
+                  <img src="{{$favorite->shop->image_path}}" width="50%">
                 </div>
                 <div class="text-box">
-                  <h2 class="title">{{$shop->shop_name}}
+                  <h2 class="title">{{$favorite->shop->shop_name}}
                   </h2>
                   <p class="date">
-                    #{{$shop->area->area_name}}
-                    #{{$shop->genru->genru_name}}
+                    #{{$favorite->shop->area->area_name}}
+                    #{{$favorite->shop->genru->genru_name}}
                   </p>
                 </div>
                 <div class="detail-favorite">
                   <form action="detail" method="GET">
                   @csrf
-                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                    <input type="hidden" name="shop_id" value="{{$favorite->shop->id}}">
                     <button class="detailbutton">詳しく見る</button>
                   </form>
                   @if(Auth::check())
-                      @if($shops && $id)
-                        <form action="/delete" method="POST">
-                        @csrf
-                          <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                            <button>お気に入り解除</button>
-                        </form>
-                      @else
-                        <form action="/favorite" method="POST">
-                        @csrf
-                          <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                            <button>お気に入り追加</button>
-                        </form>
-                      @endif
+                    @if(count($favorite->shop->favorite) == 0)
+                      <form action="/favorite" method="POST">
+                      @csrf
+                        <input type="hidden" name="user_id" value="{{$favorite->shop->id}}">
+                        <input type="hidden" name="shop_id" value="{{$favorite->shop->id}}">
+                          <button class="heart_button"><img class="heart_button" src="{{asset('img/heart-white.png')}}" alt=""></button>
+                      </form>
+                    @else
+                    <form action="/delete" method="POST">
+                      @csrf
+                        <input type="hidden" name="shop_id" value="{{$favorite->shop->id}}">
+                          <button class="heart_button"><img class="heart_button" src="{{asset('img/heart-red.png')}}" alt=""></button>
+                      </form>
+                    @endif
                   @endif
                 </div>
               </div>
             </div>
-            @endforeach
-        </div>
+          @endforeach
         @endif
       </div>
     </div>
+  </div>
 </div>
 @endsection

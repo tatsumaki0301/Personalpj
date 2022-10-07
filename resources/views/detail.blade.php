@@ -285,8 +285,6 @@ img {
   @endif
   </div>
 
-
-
 <div class="main_area">
   <div class="card_group">
     @if (@isset($shops))

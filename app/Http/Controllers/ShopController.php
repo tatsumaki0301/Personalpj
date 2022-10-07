@@ -26,6 +26,7 @@ class ShopController extends Controller
             }
             )->get();
 
+
             $param = [
             'shops' => $shops,
             'areas' => $areas,

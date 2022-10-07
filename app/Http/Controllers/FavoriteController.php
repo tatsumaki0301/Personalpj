@@ -18,7 +18,12 @@ class FavoriteController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
-        $shops = Shop::get();
+        $shops = Shop::with('area', 'genru')->with(
+            'favorite', function ($query){
+                $query->where('user_id', '=', Auth::id());
+            }
+            )->get();
+
         $reserves = Reserve::all();
         $favorite = Favorite::get();
         $favorite = Favorite::with('shop', 'user')->get();

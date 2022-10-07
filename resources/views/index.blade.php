@@ -214,48 +214,58 @@ img {
   border: 1px solid white;
   cursor: hand;
 }
+.heart_button{
+  border: none;
+  background-color: white;
+  width: 40px;
+  margin-top: -4px;
+  margin-right: 20px;
+}
+
 </style>
 @section('title', 'Rese')
 
 @section('nav')
 <div class="nav_area">
-@if (Auth::check())
-  <nav class="nav" id="nav">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/mypage">Mypage</a></li>
-      <form action="{{route('logout')}}" method="POST">
-      @csrf
-        <li>
-          <button class="button-item">Logout</button>
-        </li>
-      </form>
-    </ul>
-  </nav>
-  <div class="nav_title">
-    <div class="menu" id="menu">
-      <span class="menu_line--top"></span>
-      <span class="menu_line--middle"></span>
-      <span class="menu_line--bottom"></span>
+  @if (Auth::check())
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/mypage">Mypage</a></li>
+        <form action="{{route('logout')}}" method="POST">
+        @csrf
+          <li>
+            <button class="button-item">Logout</button>
+          </li>
+        </form>
+      </ul>
+    </nav>
+    <div class="nav_title">
+      <div class="menu" id="menu">
+        <span class="menu_line--top"></span>
+        <span class="menu_line--middle"></span>
+        <span class="menu_line--bottom"></span>
+      </div>
+  @else
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/register">Registrastion</a>
+          </li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+    <div class="nav_title">
+      <div class="menu" id="menu">
+        <span class="menu_line--top"></span>
+        <span class="menu_line--middle"></span>
+        <span class="menu_line--bottom"></span>
+      </div>
+  @endif
+
+      <h1 class="title_item">Rese</h1>
     </div>
-@else
-  <nav class="nav" id="nav">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/register">Registrastion</a>
-        </li>
-      <li><a href="/login">Login</a></li>
-    </ul>
-  </nav>
-  <div class="nav_title">
-    <div class="menu" id="menu">
-      <span class="menu_line--top"></span>
-      <span class="menu_line--middle"></span>
-      <span class="menu_line--bottom"></span>
-    </div>
-@endif
-    <h1 class="title_item">Rese</h1>
-  </div>
+
 
   <div class="search_area">
     <form action="/" method="POST">
@@ -296,7 +306,7 @@ img {
   </div>
 
   <div class="card_group">
-      @if (@isset($shops))
+    @if (@isset($shops))
       @foreach ($shops as $shop)
       <div class="wrapper">
         <div class="card">
@@ -318,25 +328,25 @@ img {
               <button class="detailbutton">詳しく見る</button>
             </form>
             @if(Auth::check())
-                @if(auth()->user()->id && $shop->id)
-                  <form action="/delete" method="POST">
-                  @csrf
-                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                      <button>お気に入り解除</button>
-                  </form>
-                @else
-                  <form action="/favorite" method="POST">
-                  @csrf
-                    <input type="hidden" name="user_id" value="{{$shop->id}}">
-                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                      <button>お気に入り追加</button>
-                  </form>
-                @endif
+              @if(count($shop->favorite) == 0)
+                <form action="/favorite" method="POST">
+                @csrf
+                  <input type="hidden" name="user_id" value="{{$shop->id}}">
+                  <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                  <button class="heart_button"><img class="heart_button" src="{{asset('img/heart-white.png')}}" alt=""></button>
+                </form>
+              @else
+              <form action="/delete" method="POST">
+                @csrf
+                  <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                  <button class="heart_button"><img class="heart_button" src="{{asset('img/heart-red.png')}}" alt=""></button>
+                </form>
+              @endif
             @endif
           </div>
         </div>
       </div>
       @endforeach
-      @endif
+    @endif
   </div>
 @endsection
