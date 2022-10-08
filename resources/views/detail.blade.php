@@ -317,8 +317,8 @@ img {
       @endif
     </div>
   </div>
+  @if (Auth::check())
   <div class="reserve_area">
-    @if (Auth::check())
     <div class="reserve_content_area">
       <div>
         <p class="reserve_title">予約</p>
@@ -373,7 +373,7 @@ img {
           <button class="reservebutton">予約する</button>
         </div>
       </form>
-      @endif
   </div>
+  @endif
 </div>
 @endsection

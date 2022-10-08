@@ -98,6 +98,7 @@
         color: white;
         padding: 15px;
         margin-bottom: 20px;
+        font-size: 25px;
     }
 </style>
 
@@ -169,7 +170,7 @@
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                 @endif
-                <x-button class="ml-3" style="background-color: blue; margin-right: 20px;" >
+                <x-button class="ml-3" style="background-color: blue; margin-right: 20px; font-size: 16px;" >
                     {{ __('ログイン') }}
                 </x-button>
             </div>

@@ -246,6 +246,7 @@ img {
 .reserve_title_items{
   font-size: 25px;
   font-weight: bold;
+  margin-left: 15px;
 }
 .reserve_area{
   width: 50%;

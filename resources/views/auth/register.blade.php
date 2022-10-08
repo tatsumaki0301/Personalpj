@@ -96,8 +96,9 @@
     .login-text-area{
         background-color: blue;
         color: white;
-        padding: 30px 15px;
+        padding: 25px 15px;
         margin-bottom: 10px;
+        font-size: 25px;
     }
 </style>
 
@@ -139,7 +140,7 @@
             <div style="display: flex;">
 
                 <img src="{{asset('img/jinbutu.png')}}" 
-                style="width: 65px; margin: 40 -20 0 3;">
+                style="width: 70px; height: 70px; margin: 30 -30 -20 0;">
 
                 <x-label for="name" :value="__('お名前'.  'Username')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 150px;"/>
 
@@ -186,7 +187,7 @@
 
             <div class="flex items-center justify-end mt-4">
 
-                <x-button class="ml-4" style="background-color: blue; margin-right: 20px;padding: 10px 20px;" >
+                <x-button class="ml-4" style="background-color: blue; margin-right: 20px;padding: 10px 20px; font-size: 16px;" >
                     {{ __('登録') }}
                 </x-button>
             </div>
