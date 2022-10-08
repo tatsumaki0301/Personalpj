@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+  
+    .nav {
+      position: absolute;
+      height: 100vh;
+      width: 100%;
+      left: -100%;
+      background: WhiteSmoke;
+      transition: .7s;
+      text-align: center;
+    }
+  
+    .nav ul {
+      padding-top: 80px;
+    }
+  
+    .nav ul li {
+      list-style-type: none;
+      margin-top: 50px;
+      font-size: 25px;
+      font-weight: bold;
+      font-family: serif;
+    }
+  
+    .menu {
+      display: inline-block;
+      width: 36px;
+      height: 32px;
+      cursor: pointer;
+      position: relative;
+      left: 50px;
+      top: 40px;
+      background-color: blue;
+      border-radius: 5px;
+    }
+  
+    .menu_line--top,
+    .menu_line--middle,
+    .menu_line--bottom {
+      display: inline-block;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      position: absolute;
+      transition: 0.5s;
+    }
+  
+    .menu_line--top {
+      top: 8px;
+      width: 30%;
+      right: 15px;
+      height: 0.5px;
+    }
+  
+    .menu_line--middle {
+      top: 16px;
+      width: 50%;
+      right: 8px;
+      height: 1px;
+    }
+  
+    .menu_line--bottom {
+      bottom: 8px;
+      height: 1px;
+      width: 15%;
+      right: 18px;
+    }
+  
+    .menu.open span:nth-of-type(1) {
+      top: 15px;
+      width: 100%;
+      left: 0px;
+      transform: rotate(45deg);
+    }
+  
+    .menu.open span:nth-of-type(2) {
+      opacity: 0;
+    }
+  
+    .menu.open span:nth-of-type(3) {
+      top: 15px;
+      width: 100%;
+      left: 0px;
+      transform: rotate(-45deg);
+    }
+  
+    .in {
+      transform: translateX(100%);
+      top: 0;
+    }
+  
+    .nav_title {
+      display: flex;
+      margin-left: 50px;
+    }
+  
+    .title_item {
+      margin: 45px 0 0 60px;
+      font-family: serif;
+      font-size: 30px;
+      color: blue;
+    }
+  
+  
+    .content_area {
+      width: 40%;
+      background-color: white;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 2.5px 2px 0px 2px rgba(0,0,0,0.15);
+    }
+  
+    .content_area-item {
+      text-align: center;
+      padding: 120px;
+    }
+  
+    .h_text {
+      width: 100%;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+  
+    .returnbutton {
+      padding: 10px 15px;
+      border-radius: 5px;
+      border-color: blue;
+      background-color: blue;
+      color: white;
+      margin: 0 auto;
+      text-align: center;
+    }

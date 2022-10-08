@@ -1,238 +1,11 @@
 @extends('layouts.default')
-<style>
-  a{
-    text-decoration: none;
-    color: blue;
-  }
-  .nav_area{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  .nav{
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    left: -100%;
-    background: WhiteSmoke;
-    transition: .7s;
-    text-align: center;
-  }
-  .nav ul{
-    padding-top: 80px;
-  }
-  .nav ul li{
-    list-style-type: none;
-    margin-top: 50px;
-    font-size: 25px;
-    font-weight: bold;
-    font-family: serif;
 
-  }
-  .button-item{
-    border: none;
-    background-color: WhiteSmoke;
-    font-size: 25px;
-    font-weight: bold;
-    font-family: serif;
-    color: blue;
-    cursor: hand;
-  }
-  .menu{
-    display: inline-block;
-    width: 36px;
-    height: 32px;
-    cursor: pointer;
-    position: relative;
-    left: 20px;
-    top: 30px;
-    background-color: blue;
-    border-radius: 5px;
-  }
-  .menu_line--top,
-  .menu_line--middle,
-  .menu_line--bottom {
-    display: inline-block;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    position: absolute;
-    transition: 0.5s;
-  }
-  .menu_line--top{
-    top: 8px;
-    width: 30%;
-    right: 15px;
-    height: 0.5px;
-  }
-  .menu_line--middle{
-    top: 16px;
-    width: 50%;
-    right: 8px;
-    height: 1px;
-  }
-  .menu_line--bottom{
-    bottom: 8px;
-    height: 1px;
-    width: 15%;
-    right: 18px;
-  }
-.menu.open span:nth-of-type(1){
-  top: 14px;
-  width: 100%;
-  left: 0px;
-  transform: rotate(45deg);
-}
-.menu.open span:nth-of-type(2){
-  opacity: 0;
-}
-.menu.open span:nth-of-type(3){
-  top: 14px;
-  width: 100%;
-  left: 0px;
-  transform: rotate(-45deg);
-}
-.in{
-  transform: translateX(100%);
-}
-.nav_title{
-  display: flex;
-}
-.title_item{
-  margin: 25px 0 0 30px;
-  font-family: serif;
-  color: blue;
-}
+<head>
+<link rel="stylesheet" href="{{ asset('css/reset.css')}}" />
+<link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+</head>
 
-.login-area{
-  margin-left: 90px;
-}
-
-  .main_area{
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-around;
-  }
-.card_group{
-  width: 40%;
-}
-.wrapper{
-  width: 100%;
-}
-.text-box {
-  display: flex;
-}
-.return-item-area{
-  margin-top: 23px;
-}
-.return-item{
-  background-color: white;
-  color: grey;
-  border-color: grey;
-  text-align: center;
-  box-shadow: 1px 1px 1px 1px;
-  border-radius: 3px;
-  padding: 0px 5px;
-}
-.title-area{
-  margin: auto 10px;
-}
-.title{
-}
-.card {
-}
-img {
-  width: 100%;
-}
-.content-img {
-  text-align: center;
-}
-.date-item {
-  font-size: 15px;
-  font-weight: 600;
-}
-.content-item{
-  font-weight: 600;
-}
-.detailbutton{
-  padding: 5px 15px;
-  background-color: blue;
-  color: white;
-  border-radius: 5px;
-  border: 1px solid white;
-}
-
-.reserve_area{
-  width: 40%;
-  height: 100%;
-  background-color: dodgerblue;
-  border-radius: 10px;
-  box-shadow: 3px 3px 0 1px rgba(0,0,0,0.2);
-}
-.reserve_content_area{
-  margin: 0 30px;
-}
-.reserve_title{
-  color: white;
-  font-size: 28px;
-  font-weight: bold;
-}
-.date_area{
-  width: 50%;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-}
-.time_area{
-  width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  margin: 15px auto;
-}
-.user_number_area{
-  width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-}
-.reservebutton_area{
-  text-align: center;
-  padding: 20px;
-  background-color: blue;
-  border-radius: 0 0 10px 10px;
-  margin: 50px auto 0;
-}
-.reserve_detail_area{
-  background-color: dodgerBlue;
-  margin-top: 50px;
-  border: none;
-  border-radius: 10px;
-}
-.reserve_detail_teble{
-  border: 5px solid dodgerblue;
-  border-radius: 10px;
-  background-color: cornflowerblue;
-}
-.reserve_detail_th{
-  padding: 10px;
-  text-align: left;
-  color: white;
-}
-.reserve_detail_td{
-  color:white;
-  width: 100%;
-  padding-left: 50px;
-}
-.reservebutton{
-  width: 100%;
-  background-color: blue;
-  border: none;
-  color: white;
-  cursor: hand;
-}
-</style>
+<body>
 @section('title', 'Rese')
 
 @section('nav')
@@ -277,6 +50,8 @@ img {
 </div>
 
 @section('content')
+<?php
+/*
   <div class="login-area">
   @if (Auth::check())
     <p>こんにちは {{$user->name . 'さん'}}</p>
@@ -284,6 +59,8 @@ img {
     <p>ゲストさん　ログインお願いします。</p>
   @endif
   </div>
+*/
+?>
 
 <div class="main_area">
   <div class="card_group">
@@ -377,3 +154,5 @@ img {
   @endif
 </div>
 @endsection
+
+</body>
