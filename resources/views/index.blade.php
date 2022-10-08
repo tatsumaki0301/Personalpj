@@ -113,7 +113,7 @@
           <div class="detail-favorite">
             <form action="detail" method="GET">
             @csrf
-            <input type="hidden" name="shop_id" value="{{$shop->id}}">
+              <input type="hidden" name="shop_id" value="{{$shop->id}}">
               <button class="detailbutton">詳しく見る</button>
             </form>
             @if(Auth::check())
