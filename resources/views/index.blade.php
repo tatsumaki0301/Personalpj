@@ -80,6 +80,7 @@
 </div>
 
 @section('content')
+
 <?php
 /*
   <div class="login-area">
@@ -89,8 +90,8 @@
     <p>ゲストさん　ログインお願いします。</p>
   @endif
   </div>
-  */
-  ?>
+*/
+?>
 
   <div class="card_group">
     @if (@isset($shops))

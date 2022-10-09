@@ -21,6 +21,7 @@ Route::POST('/done', [ReserveController::class, 'create']);
 Route::get('/mypage', [FavoriteController::class, 'favorite']);
 Route::POST('/remove', 
 [ReserveController::class, 'delete']);
+Route::POST('/update', [ReserveController::class, 'update']);
 
 
 Route::get('/thanks', [ShopController::class, 'thanks']);

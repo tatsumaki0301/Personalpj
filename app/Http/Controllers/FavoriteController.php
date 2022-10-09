@@ -18,15 +18,21 @@ class FavoriteController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
+        $reserves = Auth::user()->reserve;
+        $favorite = Auth::user()->favorite;
         $shops = Shop::with('area', 'genru')->with(
             'favorite', function ($query){
                 $query->where('user_id', '=', Auth::id());
             }
             )->get();
 
-        $reserves = Reserve::all();
-        $favorite = Favorite::get();
-        $favorite = Favorite::with('shop', 'user')->get();
+        $time = 0;
+        $timers = array();
+        for($k = 0; $k < 7; $k++)
+        {
+            $time = strtotime('01:00 + '.($k * 30). 'minute') - strtotime('17:00');
+            $timers[$time] = date('H:i', $time);
+        }
 
         $param = 
         [
@@ -35,6 +41,7 @@ class FavoriteController extends Controller
             'shops' => $shops,
             'favorite' => $favorite,
             'reserves' => $reserves, 
+            'timers' => $timers,
         ];
 
         return view('favorite', $param);
@@ -56,7 +63,6 @@ class FavoriteController extends Controller
 
         return back();
     }
-
 
     public function remove(Request $request)
     {

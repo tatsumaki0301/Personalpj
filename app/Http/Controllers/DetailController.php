@@ -20,7 +20,7 @@ class DetailController extends Controller
         $user = Auth::user();
         $id = Auth::id();
         $shops = Shop::get();
-        $reserves = Reserve::with('shop')->get();
+        $reserves = Auth::user()->reserve;
 
         $time = 0;
         $ret = array();

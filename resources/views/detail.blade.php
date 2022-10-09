@@ -50,6 +50,7 @@
 </div>
 
 @section('content')
+
 <?php
 /*
   <div class="login-area">
@@ -124,26 +125,26 @@
               @endfor
           </select>
         <div class="reserve_detail_area">
-        @foreach($reserves as $reserve)
-          <table class="reserve_detail_teble">
-            <tr>
-              <th class="reserve_detail_th">name</th>
-              <td class="reserve_detail_td">{{$reserve->shop->shop_name}}</td>
-            </tr>
-            <tr>
-              <th class="reserve_detail_th">date</th>
-              <td class="reserve_detail_td">{{substr($reserve->datetime,0,10)}}</td>
-            </tr>
-            <tr>
-              <th class="reserve_detail_th">time</th>
-              <td class="reserve_detail_td">{{substr($reserve->datetime,10,6)}}</td>
-            </tr>
-            <tr>
-              <th class="reserve_detail_th">number</th>
-              <td class="reserve_detail_td">{{$reserve->user_number}}人</td>
-            </tr>
-          </table>
-        @endforeach
+          @foreach($reserves as $reserve)
+            <table class="reserve_detail_teble">
+              <tr>
+                <th class="reserve_detail_th">name</th>
+                <td class="reserve_detail_td">{{$reserve->shop->shop_name}}</td>
+              </tr>
+              <tr>
+                <th class="reserve_detail_th">date</th>
+                <td class="reserve_detail_td">{{substr($reserve->datetime,0,10)}}</td>
+              </tr>
+              <tr>
+                <th class="reserve_detail_th">time</th>
+                <td class="reserve_detail_td">{{substr($reserve->datetime,10,6)}}</td>
+              </tr>
+              <tr>
+                <th class="reserve_detail_th">number</th>
+                <td class="reserve_detail_td">{{$reserve->user_number}}人</td>
+              </tr>
+            </table>
+          @endforeach
         </div>
     </div>
         <div class="reservebutton_area">

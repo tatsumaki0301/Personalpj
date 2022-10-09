@@ -256,6 +256,7 @@
     .reserve_detail_teble {
       border-radius: 10px;
       background-color: cornflowerblue;
+      margin-bottom: 10px;
     }
   
     .reserve_detail_th {

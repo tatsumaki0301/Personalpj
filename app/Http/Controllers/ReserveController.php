@@ -28,6 +28,25 @@ class ReserveController extends Controller
         return view('done');
     }
 
+    public function update(ReserveRequest $request)
+    {
+        $user_id = $request->user_id;
+        $shop_id = $request->shop_id;
+        $user_number = $request->user_number;
+        $datetime = date('Y-m-d H:i',strtotime($request->date.  $request->time));
+        
+        $param = [
+            'user_id' => $user_id,
+            'shop_id' => $shop_id,
+            'datetime' => $datetime,
+            'user_number' => $user_number,
+        ];
+
+        Reserve::where('id', $request->id)->update($param);
+
+        return redirect('/mypage');
+    }
+
     public function delete(Request $request)
     {
 
@@ -35,5 +54,6 @@ class ReserveController extends Controller
 
         return back();
     }
+
 
 }

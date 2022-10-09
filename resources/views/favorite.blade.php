@@ -63,12 +63,17 @@
               予約{{$key+1}}</th>
               <form action="/remove" method="POST">
                 @csrf
-              <td class="delete_button_area">
+              <td>
                 <input type="hidden" name="deleteId" value="{{$reserve->id}}">
+              </td>
+              <td class="delete_button_area">
                 <button class="delete_button">Ｘ</button>
               </td>
               </form>
             </tr>
+
+            <form action="/update" method="post">
+              @csrf
             <tr>
               <th class="reserve_detail_th">name</th>
               <td class="reserve_detail_td">
@@ -77,14 +82,56 @@
             <tr>
               <th class="reserve_detail_th">date</th>
               <td class="reserve_detail_td">{{substr($reserve->datetime,0,10)}}</td>
+
+              <td class="update_area">
+                <div>
+                  <input type="hidden" name="id" value="{{$reserve->id}}">
+                  <input type="hidden" name="user_id" value="{{$id}}">
+                  <input type="hidden" name="shop_id" value="{{$reserve->shop->id}}">
+                  <label for="datetime">
+                  <input class="date_area" type="date" id="datetime" name="date" value="yyyy-MM-dd" required>
+                </div>
+              </td>
+
             </tr>
             <tr>
               <th class="reserve_detail_th">time</th>
               <td class="reserve_detail_td">{{substr($reserve->datetime,10,6)}}</td>
+
+              <td class="update_area">
+                <div>
+                  <select class="time_area" id="time" name="time" required>
+                    <option></option>
+                    @foreach($timers as $timer)
+                    <option value="{{$timer}}">{{$timer}}</option>
+                    @endforeach
+                  </select>
+                  </label>
+                </div>
+              </td>
+
             </tr>
             <tr>
               <th class="reserve_detail_th">number</th>
               <td class="reserve_detail_td">{{$reserve->user_number}}人</td>
+
+              <td class="update_area">
+                <select class="user_number_area" id="user_number" name="user_number" required>
+                    <option></option>
+                    @for($j=1; $j <= 10; $j++)
+                    <option value="{{$j}}">{{$j}}人</option>
+                    @endfor
+                </select>
+              </td>
+
+            </tr>
+            <tr>
+              <th></th>
+              <td></td>
+                <td class="update_button_area">
+                  <button class="update_button">変更</button>
+                </td>
+              </form>
             </tr>
           </table>
       @endforeach
@@ -127,7 +174,7 @@
                   @if(Auth::check())
                     @if(count($favorite->shop->favorite) == 0)
                       <form action="/favorite" method="POST">
-                      @csrf
+                        @csrf
                         <input type="hidden" name="user_id" value="{{$favorite->shop->id}}">
                         <input type="hidden" name="shop_id" value="{{$favorite->shop->id}}">
                           <button class="heart_button"><img class="heart_button" src="{{asset('img/heart-white.png')}}" alt=""></button>
