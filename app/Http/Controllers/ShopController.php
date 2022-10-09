@@ -97,6 +97,7 @@ class ShopController extends Controller
     {
         return view('done');
     }
+    
     public function thanks()
     {
         return view('thanks');
