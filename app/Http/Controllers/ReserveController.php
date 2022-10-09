@@ -9,9 +9,11 @@ use DateTime;
 
 class ReserveController extends Controller
 {
-    public function create(Request $request)
+    public function create(ReserveRequest $request)
     {
         $reserves = Reserve::with('shop','user')->get();
+        $validated = $request->validated();
+
         
         $datetime = date('Y-m-d H:i',strtotime($request->date.  $request->time));
         
@@ -19,7 +21,8 @@ class ReserveController extends Controller
             'datetime' => $datetime,
             'user_id' => $request->user_id,
             'shop_id' => $request->shop_id,
-            'user_number'=> $request->user_number
+            'user_number'=> $request->user_number,
+            'validated' => $validated,
         ];
         Reserve::create($form);
         return view('done');

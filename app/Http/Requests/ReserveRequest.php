@@ -25,7 +25,10 @@ class ReserveRequest extends FormRequest
     {
         return [
             'user_number' => 'required',
-            'datetime' => 'required',
+            'user_id' => 'required',
+            'shop_id' => 'required',
+            'date' => 'required|date|after:today',
+            'time' => 'required'
         ];
     }
 }
