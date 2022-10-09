@@ -148,17 +148,19 @@
     }
   
     .return-item-area {
-      margin-top: 23px;
+      margin-top: 20px;
     }
   
     .return-item {
       background-color: white;
       color: grey;
       border-color: grey;
+      border: none;
       text-align: center;
       box-shadow: 1px 1px 1px 1px;
       border-radius: 3px;
-      padding: 0px 5px;
+      padding: 4px 8px;
+      font-weight: bold;
     }
   
     .title-area {

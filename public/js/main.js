@@ -10,4 +10,10 @@ target.addEventListener('click', function () {
   nav.classList.toggle('in');
 });
 /******/ })()
-;
+  ;
+
+  const back = document.getElementById('btn--back');
+  back.addEventListener('click', (e) => {
+  history.back();
+  return false;
+  });

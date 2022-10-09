@@ -69,7 +69,7 @@
     <div class="wrapper">
       <div class="text-box">
         <div class="return-item-area">
-          <a href="/" class="return-item"><</a>
+          <button id="btn--back"  class="return-item"><</button>
         </div>
         <div class="title-area">
           <h2 class="title">{{$shop->shop_name}}
