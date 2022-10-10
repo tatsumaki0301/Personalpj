@@ -227,7 +227,7 @@ a {
 
 .wrapper {
   width: 21%;
-  margin: 20px auto 0;
+  margin: 20px auto -10px;
 }
 
 img {
@@ -412,4 +412,19 @@ svg.w-5.h-5 {
   /*paginateメソッドの矢印の大きさ調整のために追加*/
   width: 30px;
   height: 30px;
+}
+.pagination {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 50px;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+  
+.page-link {
+  margin: 0px 5px;
+  font-size: 15px;
 }

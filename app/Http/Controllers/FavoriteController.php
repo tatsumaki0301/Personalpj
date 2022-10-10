@@ -10,6 +10,7 @@ use App\Models\Favorite;
 use App\Models\Reserve;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use App\Http\Requests\FavoriteRequest;
 
 class FavoriteController extends Controller

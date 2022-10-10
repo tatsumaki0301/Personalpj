@@ -10,6 +10,7 @@ use App\Models\Reserve;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReserveRequest;
+use Illuminate\Pagination\Paginator;
 
 
 
