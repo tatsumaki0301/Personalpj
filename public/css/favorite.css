@@ -399,11 +399,10 @@ img {
 .update_button{
   margin: 20px auto;
   padding: 5px 10px;
-  border: 1px solid white;
+  border: 2px solid white;
   border-color: white;
   border-radius: 5px;
-  background-color: rgb(2, 103, 255);
-  font-weight: bold;
+  background-color: blue;
   color: white;
   cursor: hand;
 }

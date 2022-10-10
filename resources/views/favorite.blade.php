@@ -55,12 +55,12 @@
   <div class="reserve_area">
       <p class="reserve_title_items">予約状況</p>
     <div class="reserve_detail_area">
-      @foreach($reserves as $key=>$reserve)
+      @foreach($reserves as $reserve)
           <table class="reserve_detail_teble">
             <tr>
               <th class="reserve_count_text">
               <img src="{{asset('img/tokei2.png')}}" style="width: 20px; margin: 0 5 -5 0;">
-              予約{{$key+1}}</th>
+              予約{{$reserves->firstItem() + $loop->index}}</th>
               <form action="/remove" method="POST">
                 @csrf
               <td>
@@ -122,7 +122,7 @@
               <th></th>
                 <td></td>
                 <td class="update_button_area">
-                  <button class="update_button">変更</button>
+                  <button class="update_button">予約変更</button>
                 </td>
             </form>
             </tr>
