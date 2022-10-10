@@ -145,6 +145,8 @@
               </tr>
             </table>
           @endforeach
+          {{ $reserves->appends(request()->query())->links()}}
+
         </div>
     </div>
         <div class="reservebutton_area">

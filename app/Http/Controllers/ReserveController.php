@@ -13,7 +13,6 @@ class ReserveController extends Controller
     {
         $reserves = Reserve::with('shop','user')->get();
         $validated = $request->validated();
-
         
         $datetime = date('Y-m-d H:i',strtotime($request->date.  $request->time));
         
