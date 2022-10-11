@@ -47,7 +47,8 @@ COAHTECH アドバンスタームの課題として作成
 - CSS  
   
 ## テーブル設計  
-< --- 作成したテーブル設計の画像 --- >  
+![table1](/image/table1.png)  
+![table2](/image/table2.png)  
   
 ## ＥＲ図  
 ![ER図](/img/ER図.png)
