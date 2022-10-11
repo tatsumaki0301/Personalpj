@@ -50,7 +50,7 @@ COAHTECH アドバンスタームの課題として作成
 < --- 作成したテーブル設計の画像 --- >  
   
 ## ＥＲ図  
-![ＥＲ図](advanceterm-larapj\public\img\ER図.png)
+![ＥＲ図](advanceterm-larapj\img\ER図.png)
   
 ## 環境構築  
 他の人でもプロジェクトを実行できるようコマンドや編集ファイルを記述する
