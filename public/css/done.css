@@ -26,6 +26,15 @@
     font-weight: bold;
     font-family: serif;
   }
+  .button-item {
+    border: none;
+    background-color: WhiteSmoke;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: serif;
+    color: blue;
+    cursor: hand;
+    }
 
   .menu {
     display: inline-block;
@@ -87,16 +96,6 @@
     width: 100%;
     left: 0px;
     transform: rotate(-45deg);
-  }
-
-  .button-item {
-    border: none;
-    background-color: WhiteSmoke;
-    font-size: 25px;
-    font-weight: bold;
-    font-family: serif;
-    color: blue;
-    cursor: hand;
   }
 
   .in {
