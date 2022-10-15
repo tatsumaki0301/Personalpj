@@ -89,6 +89,16 @@
     transform: rotate(-45deg);
   }
 
+  .button-item {
+    border: none;
+    background-color: WhiteSmoke;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: serif;
+    color: blue;
+    cursor: hand;
+  }
+
   .in {
     transform: translateX(100%);
     top: 0;

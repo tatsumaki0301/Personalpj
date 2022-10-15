@@ -12,9 +12,14 @@
 
   <nav class="nav" id="nav">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Logout</a></li>
-      <li><a href="#">Mypage</a></li>
+      <li><a href="/">Home</a></li>
+      <form action="{{route('logout')}}" method="POST">
+        @csrf
+      <li>
+        <button class="button-item">Logout</button>
+      </li>
+      </form>
+      <li><a href="/mypage">Mypage</a></li>
     </ul>
   </nav>
   <div class="nav_title">
