@@ -124,10 +124,12 @@
       color: blue;
     }
   
+
     .login-area {
       margin-left: 90px;
     }
   
+
     .main_area {
       display: flex;
       margin: 0 auto;
@@ -189,13 +191,6 @@
       font-weight: 600;
     }
   
-    .detailbutton {
-      padding: 5px 15px;
-      background-color: blue;
-      color: white;
-      border-radius: 5px;
-      border: 1px solid white;
-    }
   
     .reserve_area {
       width: 40%;
@@ -299,3 +294,15 @@
     font-size: 15px;
   }
   
+
+@media screen and (max-width: 768px) {
+  .card_group {
+    width: 70%;
+    margin: 0px 20px;
+  }
+
+  .reserve_area{
+    width: 70%;
+    margin: 0px 20px;
+  }
+  }

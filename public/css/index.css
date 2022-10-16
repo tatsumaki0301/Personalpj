@@ -259,3 +259,14 @@
     margin-top: -4px;
     margin-right: 20px;
   }
+
+  @media screen and (max-width: 768px){
+    .wrapper{
+      width: 40%;
+      margin: 0px auto;
+    }
+    .search_area{
+      width: 60%;
+      margin: 30px 20px 0 0;
+    }
+  }

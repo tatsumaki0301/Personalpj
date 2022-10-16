@@ -146,3 +146,22 @@
     margin: 0 auto;
     text-align: center;
   }
+
+  @media screen and (max-width: 768px) {
+    .content_area-item {
+      width: 100%;
+      text-align: center;
+      padding: 0;
+    }
+    
+    .h_text {
+      font-size: 16px;
+      padding: 50px 0;
+      margin: 10px auto 0px;
+    }
+    
+    .returnbutton {
+      padding: 5px 15px;
+      margin: 0 auto 50px;
+    }
+  }

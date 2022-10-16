@@ -427,3 +427,32 @@ svg.w-5.h-5 {
   margin: 0px 5px;
   font-size: 15px;
 }
+
+@media screen and (max-width: 768px) {
+  .main_area {
+    width: unset;
+  }
+  
+  .reserve_area {
+    width: unset;
+  }
+  
+  .reserve_detail_area {
+    width: unset;  }
+
+  .favorite_area{
+    margin: unset;
+  }
+  
+  .favorite_area_item{
+    margin: unset;
+  }
+
+  .card_group{
+    width: unset;
+  }
+
+  .wrapper{
+    width: 40%;
+  }
+}
