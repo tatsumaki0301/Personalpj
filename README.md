@@ -12,7 +12,7 @@ https://gentle-falls-41390.herokuapp.com/
   
 
 ## 他のリポジトリ  
-  Github 
+  Github   
   https://github.com/tatsumaki0301/Resepj.git  
 
 ## 機能一覧  
@@ -35,7 +35,7 @@ https://gentle-falls-41390.herokuapp.com/
 - エリアとジャンルで検索  
 - 飲食店予約情報変更  
 - 認証、予約でのバリデーション  
-- レスポンシブデザイン　（ブレークポイント768px）  
+- レスポンシブデザイン（ブレークポイント768px）  
   
   
 ## 仕様技術（実行環境）  
@@ -55,11 +55,12 @@ https://gentle-falls-41390.herokuapp.com/
   
 ## 環境構築  
 ローカル環境構築  
-- php artisan migrate:fresh --seed でテーブル作成とシーディング  
+- php artisan migrate:fresh --seed （テーブル作成とシーディング）  
   
 本番環境構築(Heroku)  
 - heroku run php artisan migrate （マイグレーション）  
-- heroku run php artisan db:seed （シーダー挿入）    
+- heroku run php artisan db:seed （シーダー挿入）  
+- heroku run php artisan migrate:fresh --seed （テーブル削除後に再度作成しシーディングし直します。）
   
 ## 他に記載することがあれば記載する  
 例 ) ## アカウントの種類（テストユーザーなど）  
