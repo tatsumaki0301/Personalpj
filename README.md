@@ -1,22 +1,20 @@
-# アプリケーション名  
-概要説明（どんなアプリか）  
+# Rese    
 ### 飲食店予約アプリ
 [Rese](http://127.0.0.1:8000)
   
 
 ## 作成した目的  
-概要説明（なんで作成したか)  
 COAHTECH アドバンスタームの課題として作成  
   
 
 ## アプリケーションＵＲＬ  
-https://safe-sea-60404.herokuapp.com/ 
+https://gentle-falls-41390.herokuapp.com/ 
   
 
 ## 他のリポジトリ  
-関連するリポジトリがあれば記載する  
-例 ） バックエンドのリポジトリ、フロントエンドのリポジトリ  
-  
+  Github 
+  https://github.com/tatsumaki0301/Resepj.git  
+
 ## 機能一覧  
   
 - 会員登録  
@@ -37,6 +35,7 @@ https://safe-sea-60404.herokuapp.com/
 - エリアとジャンルで検索  
 - 飲食店予約情報変更  
 - 認証、予約でのバリデーション  
+- レスポンシブデザイン　（ブレークポイント768px）  
   
   
 ## 仕様技術（実行環境）  
@@ -44,6 +43,8 @@ https://safe-sea-60404.herokuapp.com/
 - PHP  
 - HTML  
 - CSS  
+- javascript  
+- mysql  
   
 ## テーブル設計  
 ![table1](/img/table1.png)  
@@ -53,7 +54,12 @@ https://safe-sea-60404.herokuapp.com/
 ![ER図](/img/ER図.png)
   
 ## 環境構築  
-他の人でもプロジェクトを実行できるようコマンドや編集ファイルを記述する
+ローカル環境構築  
+- php artisan migrate:fresh --seed でテーブル作成とシーディング  
+  
+本番環境構築(Heroku)  
+- heroku run php artisan migrate （マイグレーション）  
+- heroku run php artisan db:seed （シーダー挿入）    
   
 ## 他に記載することがあれば記載する  
 例 ) ## アカウントの種類（テストユーザーなど）  
