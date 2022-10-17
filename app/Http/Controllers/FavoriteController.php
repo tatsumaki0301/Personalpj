@@ -19,8 +19,8 @@ class FavoriteController extends Controller
     {
         $user = Auth::user();
         $id = Auth::id();
-        $reserves = Auth::user()->reserve()->paginate(2, ["*"], 'user-page')->appends(['favorite-page' => \Request::get('favorite-page')]);
-        $favorite = Auth::user()->favorite()->paginate(8, ["*"], 'favorite-page')->appends(['user-page' => \Request::get('user-page')]);
+        $reserves = Auth::user()->reserve()->paginate(1, ["*"], 'user-page')->appends(['favorite-page' => \Request::get('favorite-page')]);
+        $favorite = Auth::user()->favorite()->paginate(2, ["*"], 'favorite-page')->appends(['user-page' => \Request::get('user-page')]);
 
         $shops = Shop::with('area', 'genru')->with(
             'favorite', function ($query){

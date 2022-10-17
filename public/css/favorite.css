@@ -226,8 +226,8 @@ a {
 }
 
 .wrapper {
-  width: 21%;
-  margin: 20px auto -10px;
+  width: 45%;
+  margin: 20px auto;
 }
 
 img {
@@ -277,6 +277,10 @@ img {
   border-radius: 5px;
   border: 1px solid white;
   cursor: hand;
+}
+.detailbutton:hover {
+  opacity: 0.7;
+  transition-duration: 0.8s;
 }
 
 .heart_button {
@@ -369,6 +373,11 @@ img {
   cursor: hand;
   margin: 5 20 0 0;
 }
+.delete_button:hover {
+  color: red;
+  border-color: red;
+  transition-duration: 0.8s;
+}
 
 .update_area{
   text-align: center;
@@ -405,6 +414,11 @@ img {
   background-color: blue;
   color: white;
   cursor: hand;
+}
+.update_button:hover {
+  color: red;
+  border-color: red;
+  transition-duration: 0.8s;
 }
 
 svg.w-5.h-5 {

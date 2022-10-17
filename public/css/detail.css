@@ -273,6 +273,10 @@
       color: white;
       cursor: hand;
     }
+    .reservebutton_area:hover {
+      opacity: 0.5;
+      transition-duration: 0.8s;
+    }
 
   svg.w-5.h-5 {
     /*paginateメソッドの矢印の大きさ調整のために追加*/
