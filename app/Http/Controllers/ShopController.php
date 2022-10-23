@@ -103,38 +103,4 @@ class ShopController extends Controller
         return view('thanks');
     }
 
-
-    public function file(Request $request)
-    {
-
-        $shops = Shop::all();
-        $areas = Area::all();
-        $genrus = Genru::all();
-        $shops = Shop::with('area', 'genru')->get();
-        
-        $param = [
-            'shops' => $shops,
-            'areas' => $areas,
-            'genrus' => $genrus,
-        ];
-        return view('file', $param, ['shops' => $shops],);
-    }
-    public function create(ShopRequest $request)
-    {
-
-        $image_path = $request->file('image_path');
-        $path = $image_path->store('img','public');
-        
-        $form = [
-            'shop_name' => $request->shop_name,
-            'shop_content' => $request->shop_content,
-            'image_path' => $path,
-            'area_id' => $request->area_id,
-            'genru_id' => $request->genru_id,
-        ];
-        unset($form['_token']);
-        Shop::create($form);
-
-        return redirect('/file');
-    }
 }
