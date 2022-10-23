@@ -94,6 +94,7 @@
   .in {
     transform: translateX(100%);
     top: 0;
+    position: fixed;
   }
 
   .nav_title {
@@ -101,7 +102,7 @@
   }
 
   .title_item {
-    margin: 45px 0 0 60px;
+    margin: 35px 0 0 60px;
     font-family: serif;
     font-size: 30px;
     color: blue;
@@ -145,21 +146,6 @@
     text-align: left;
   }
 
-  .shop_name {
-    padding: 5px;
-    font-size: 10px;
-  }
-
-  .area_name {
-    padding: 5px;
-    margin: 5px 0;
-  }
-
-  .genru_name {
-    padding: 5px;
-    margin: 5px 0;
-  }
-
   .upsubmit {
     margin-top: 20px;
     padding: 10px;
@@ -174,15 +160,25 @@
   }
 
   .shop_item_area {
-    width: 95%;
+    width: 50%;
     margin: 50px auto;
   }
 
   table {
+    width: 100%;
     margin: 0 auto;
     text-align: center;
   }
 
+  .shop_item_title{
+    height: 80px;
+    font-size: 20px;
+  }
+
   .th_item {
     width: 70px;
+  }
+
+  .shop_img{
+    width: 50%;
   }
