@@ -5,8 +5,6 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ReserveController;
-use App\Http\Controllers\FileController;
-
 
 
 Route::get('/', [ShopController::class, 'index']);
@@ -26,12 +24,6 @@ Route::POST('/update', [ReserveController::class, 'update']);
 
 
 Route::get('/thanks', [ShopController::class, 'thanks']);
-
-
-
-Route::get('/file', [fileController::class, 'file']);
-Route::post('/file', [fileController::class, 'create']);
-
 
 
 Route::get('/dashboard', function () {
