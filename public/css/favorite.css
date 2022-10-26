@@ -448,13 +448,14 @@ svg.w-5.h-5 {
   }
   
   .reserve_area {
-    width: unset;
+    width: 50%;
   }
   
   .reserve_detail_area {
     width: unset;  }
 
   .favorite_area{
+    width: unset;
     margin: unset;
   }
   
