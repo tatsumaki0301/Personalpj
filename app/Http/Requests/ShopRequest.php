@@ -24,7 +24,6 @@ class ShopRequest extends FormRequest
     public function rules()
     {
         return [
-            'shop_name' => 'required',
             'shop_content' => 'required',
             'image_path' => 'file',
         ];

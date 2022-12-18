@@ -52,8 +52,6 @@
       height: 32px;
       cursor: pointer;
       position: relative;
-      left: 20px;
-      top: 40px;
       background-color: blue;
       border-radius: 5px;
     }
@@ -111,14 +109,11 @@
     .in {
       transform: translateX(100%);
       top: 0;
-    }
-  
-    .nav_title {
-      display: flex;
+      position: fixed;
     }
   
     .title_item {
-      margin: 45px 0 0 30px;
+      margin: 5px 0 0 50px;
       font-family: serif;
       font-size: 30px;
       color: blue;
@@ -171,6 +166,19 @@
   
     .title {
       font-size: 25px;
+    }
+    .review-button-area{
+      margin: 10px auto;
+    }
+    .review-button{
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      border-color: white;
+      background: blue;
+      color: white;
+      font-style: italic;
+      cursor: hand;
     }
   
     img {
@@ -300,13 +308,28 @@
   
 
 @media screen and (max-width: 768px) {
+  .login-area{
+    text-align: center;
+    margin: 10 auto;
+    margin-left: unset;
+  }
+  
   .card_group {
-    width: 70%;
-    margin: 0px 20px;
+    width: 90%;
+    margin: 0px auto;
+  }
+
+  .reserve_title{
+    padding: 10px;
   }
 
   .reserve_area{
-    width: 70%;
-    margin: 0px 20px;
+    width: 90%;
+    height: unset;
+    margin: 0px auto 20px;
   }
+
+  .main_area{
+    display: unset;
   }
+}

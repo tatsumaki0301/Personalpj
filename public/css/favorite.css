@@ -51,8 +51,6 @@ a {
   height: 32px;
   cursor: pointer;
   position: relative;
-  left: 20px;
-  top: 40px;
   background-color: blue;
   border-radius: 5px;
 }
@@ -110,14 +108,12 @@ a {
 .in {
   transform: translateX(100%);
   top: 0;
+  position: fixed;
 }
 
-.nav_title {
-  display: flex;
-}
 
 .title_item {
-  margin: 45px 0 0 30px;
+  margin: 5px 0 0 50px;
   font-family: serif;
   font-size: 30px;
   color: blue;
@@ -359,6 +355,22 @@ img {
   width: 100%;
   text-align: start;
 }
+.review_button_area{
+  text-align: center;
+}
+.review_button{
+  background-color: blue;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: hand;
+}
+.review_button:hover {
+  color: red;
+  border-color: red;
+  transition-duration: 0.8s;
+}
 
 .delete_button_area {
   text-align: end;
@@ -420,6 +432,10 @@ img {
   border-color: red;
   transition-duration: 0.8s;
 }
+.reviewlink{
+  color: white;
+  font-size: 11px;
+}
 
 svg.w-5.h-5 {
   /*paginateメソッドの矢印の大きさ調整のために追加*/
@@ -445,14 +461,24 @@ svg.w-5.h-5 {
 @media screen and (max-width: 768px) {
   .main_area {
     width: unset;
+    display: unset;
   }
   
   .reserve_area {
-    width: 50%;
+    width: 100%;
   }
   
   .reserve_detail_area {
-    width: unset;  }
+    width: unset;
+  }
+
+  .update_area{
+    padding-right: unset;
+  }
+
+  .delete_button{
+    margin: 5 5 0 0;
+  }
 
   .favorite_area{
     width: unset;

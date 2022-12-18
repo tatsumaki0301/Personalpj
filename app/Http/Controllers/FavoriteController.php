@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Area;
-use App\Models\Genru;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Reserve;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -75,4 +74,5 @@ class FavoriteController extends Controller
 
         return back();
     }
+
 }

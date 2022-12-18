@@ -25,8 +25,20 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+
+        //管理者画面へリダイレクト
+            if ($guard == 'admin') {
+                return redirect(RouteServiceProvider::ADMIN_HOME);
+            }
+
+        //店舗代表者画面へリダイレクト
+            if ($guard == 'person') {
+                return redirect(RouteServiceProvider::PERSON_HOME);
+            }
+
         }
 
         return $next($request);
+        
     }
 }

@@ -113,12 +113,8 @@
     position: fixed;
   }
 
-  .nav_title {
-    display: flex;
-  }
-
   .title_item {
-    margin: 45px 0 0 30px;
+    margin: 5px 0 0 50px;
     font-family: serif;
     font-size: 30px;
     color: blue;
@@ -271,7 +267,7 @@
       margin: 0px auto;
     }
     .search_area{
-      width: 60%;
+      width: 50%;
       margin: 30px 20px 0 0;
     }
   }

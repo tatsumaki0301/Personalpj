@@ -22,5 +22,9 @@ class Reserve extends Model
     public function shop(){
         return $this->belongsTo('App\Models\Shop');
     }
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
 
 }

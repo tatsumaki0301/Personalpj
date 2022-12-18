@@ -1,0 +1,210 @@
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+
+      .nav_area {
+        width: 90%;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav {
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+        left: -100%;
+        background: WhiteSmoke;
+        transition: .7s;
+        text-align: center;
+      }
+
+      .nav ul {
+        padding-top: 100px;
+      }
+
+      .nav ul li {
+        list-style-type: none;
+        margin-top: 50px;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: serif;
+      }
+
+      .button-item {
+        border: none;
+        background-color: WhiteSmoke;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: serif;
+        color: blue;
+        cursor: hand;
+      }
+
+      .menu {
+        display: inline-block;
+        width: 36px;
+        height: 32px;
+        cursor: pointer;
+        position: relative;
+        background-color: blue;
+        border-radius: 5px;
+      }
+
+      .menu_line--top,
+      .menu_line--middle,
+      .menu_line--bottom {
+        display: inline-block;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        position: absolute;
+        transition: 0.5s;
+      }
+
+      .menu_line--top {
+        top: 8px;
+        width: 30%;
+        right: 15px;
+        height: 0.5px;
+      }
+
+      .menu_line--middle {
+        top: 16px;
+        width: 50%;
+        right: 8px;
+        height: 1px;
+      }
+
+      .menu_line--bottom {
+        bottom: 8px;
+        height: 1px;
+        width: 15%;
+        right: 18px;
+      }
+
+      .menu.open span:nth-of-type(1) {
+        top: 15px;
+        width: 100%;
+        left: 0px;
+        transform: rotate(45deg);
+      }
+
+      .menu.open span:nth-of-type(2) {
+        opacity: 0;
+      }
+
+      .menu.open span:nth-of-type(3) {
+        top: 15px;
+        width: 100%;
+        left: 0px;
+        transform: rotate(-45deg);
+      }
+
+      .in {
+        transform: translateX(100%);
+        top: 0;
+        position: fixed;
+      }
+
+      .title_item {
+        margin: 5px 0 0 50px;
+        font-family: serif;
+        font-size: 30px;
+        color: blue;
+      }
+      .login-area {
+        width: 88%;
+        margin: 50 auto 0;
+        font-size: 18px;
+      }
+      .products-review-area{
+        text-align: center;
+        margin: 50px auto;
+        font-size: 20px;
+        font-weight: bolder;
+      }
+      .products-table-area {
+        width: 100%;
+      }
+      .product-table {
+        width: 60%;
+        margin: 0 auto;
+      }
+      tr {
+        text-align: center;
+      }
+      th {
+        margin: 20px auto;
+        padding: 20px 0;
+      }
+      .please-text-area{
+        text-align: center;
+        margin: 80px auto 30px;
+      }
+      .please-text{
+        font-size: 18px;
+        font-weight: bolder;
+      }
+      .star-area{
+        text-align: center;
+        margin: 50px auto;
+      }
+      .star-select{
+        padding: 10px 20px;
+        font-size: 20px;
+        color: yellow;
+        border: none;
+        background: skyblue;
+      }
+      .review-text-area{
+        text-align: center;
+      }
+      .textarea-class{
+        font-size: 20px;
+        padding: 10px;
+      }
+      .textarea-comment-text{
+        text-align: center;
+        margin: 50px auto 20px;
+      }
+      .comment-text{
+        font-size: 16px;
+      }
+      .review-button-area{
+        text-align: center;
+        margin: 50px auto;
+      }
+      .review-button{
+        background: blue;
+        border-radius: 5px;
+        border: none;
+        padding: 10px 20px;
+        font-size: 15px;
+        color: white;
+        cursor: hand;
+      }
+
+@media screen and (max-width: 768px) {
+
+  .products-review-area {
+    width: 80%;
+  }
+  .review-text-area {
+    width: 100%;
+  }
+  .textarea-class {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .product-table {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .please-text {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

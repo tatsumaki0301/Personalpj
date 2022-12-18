@@ -14,7 +14,8 @@ class Shop extends Model
         'area_id' , 
         'genru_id', 
         'shop_content', 
-        'image_path'
+        'image_path',
+        'person_id'
     ];
 
     public function getPostImageAttribute($value){
@@ -33,5 +34,12 @@ class Shop extends Model
     public function reserve(){
         return $this->hasMany('App\Models\Reserve');
     }
+    public function reviews(){
+        return $this->hasMany('App\Models\Review');
+    }
+    public function person(){
+        return $this->belongsTo('App\Models\Person');
+    }
+
 
 }

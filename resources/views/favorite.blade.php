@@ -22,12 +22,12 @@
       </form>
     </ul>
   </nav>
-  <div class="nav_title">
-    <div class="menu" id="menu">
-      <span class="menu_line--top"></span>
-      <span class="menu_line--middle"></span>
-      <span class="menu_line--bottom"></span>
-    </div>
+  <div class="menu" id="menu">
+    <span class="menu_line--top"></span>
+    <span class="menu_line--middle"></span>
+    <span class="menu_line--bottom"></span>
+    <h1 class="title_item">Rese</h1>
+  </div>
 @else
   <nav class="nav" id="nav">
     <ul>
@@ -37,15 +37,13 @@
       <li><a href="/login">Login</a></li>
     </ul>
   </nav>
-  <div class="nav_title">
-    <div class="menu" id="menu">
-      <span class="menu_line--top"></span>
-      <span class="menu_line--middle"></span>
-      <span class="menu_line--bottom"></span>
-    </div>
-@endif
+  <div class="menu" id="menu">
+    <span class="menu_line--top"></span>
+    <span class="menu_line--middle"></span>
+    <span class="menu_line--bottom"></span>
     <h1 class="title_item">Rese</h1>
   </div>
+@endif
 </div>
 
 
@@ -61,6 +59,17 @@
               <th class="reserve_count_text">
               <img src="{{asset('img/tokei2.png')}}" style="width: 20px; margin: 0 5 -5 0;">
               予約{{$reserves->firstItem() + $loop->index}}</th>
+              
+              <form action="/review" method="POST">
+                @csrf
+                <td>
+                  <input type="hidden" name="reviewId" value="{{$reserve->id}}" />
+                </td>
+                <td class="review_button_area">
+                  <button class="review_button">レビュー</button>
+                </td>
+              </form>
+
               <form action="/remove" method="POST">
                 @csrf
               <td>
@@ -112,7 +121,7 @@
                 <td class="update_area">
                   <select class="user_number_area" id="user_number" name="user_number" required>
                       <option></option>
-                      @for($j=1; $j <= 10; $j++)
+                      @for($j=1; $j <= 5; $j++)
                       <option value="{{$j}}">{{$j}}人</option>
                       @endfor
                   </select>
@@ -120,7 +129,7 @@
             </tr>
             <tr>
               <th></th>
-                <td></td>
+              <td></td>
                 <td class="update_button_area">
                   <button class="update_button">予約変更</button>
                 </td>

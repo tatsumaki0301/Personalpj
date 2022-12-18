@@ -9,8 +9,6 @@ use App\Models\Area;
 use App\Models\Genru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ShopRequest;
-use App\Http\Requests\FavoriteRequest;
 
 class ShopController extends Controller
 {

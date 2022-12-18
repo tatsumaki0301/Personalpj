@@ -9,11 +9,10 @@ target.addEventListener('click', function () {
   var nav = document.getElementById("nav");
   nav.classList.toggle('in');
 });
-/******/ })()
-  ;
-
-  const back = document.getElementById('btn--back');
-  back.addEventListener('click', (e) => {
+var back = document.getElementById('btn--back');
+back.addEventListener('click', function (e) {
   history.back();
   return false;
-  });
+});
+/******/ })()
+;

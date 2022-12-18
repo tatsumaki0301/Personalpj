@@ -7,10 +7,9 @@
 
 <body>
 @section('title', 'Rese')
-
 @section('nav')
 <div class="nav_area">
-@if (Auth::check())
+  @if (Auth::check())
   <nav class="nav" id="nav">
     <ul>
       <li><a href="/">Home</a></li>
@@ -23,13 +22,13 @@
       </form>
     </ul>
   </nav>
-  <div class="nav_title">
-    <div class="menu" id="menu">
-      <span class="menu_line--top"></span>
-      <span class="menu_line--middle"></span>
-      <span class="menu_line--bottom"></span>
-    </div>
-@else
+  <div class="menu" id="menu">
+    <span class="menu_line--top"></span>
+    <span class="menu_line--middle"></span>
+    <span class="menu_line--bottom"></span>
+    <h1 class="title_item">Rese</h1>
+  </div>
+  @else
   <nav class="nav" id="nav">
     <ul>
       <li><a href="/">Home</a></li>
@@ -38,21 +37,17 @@
       <li><a href="/login">Login</a></li>
     </ul>
   </nav>
-  <div class="nav_title">
-    <div class="menu" id="menu">
-      <span class="menu_line--top"></span>
-      <span class="menu_line--middle"></span>
-      <span class="menu_line--bottom"></span>
-    </div>
-@endif
+  <div class="menu" id="menu">
+    <span class="menu_line--top"></span>
+    <span class="menu_line--middle"></span>
+    <span class="menu_line--bottom"></span>
     <h1 class="title_item">Rese</h1>
   </div>
+@endif
 </div>
 
 @section('content')
 
-<?php
-/*
   <div class="login-area">
   @if (Auth::check())
     <p>こんにちは {{$user->name . 'さん'}}</p>
@@ -60,8 +55,6 @@
     <p>ゲストさん　ログインお願いします。</p>
   @endif
   </div>
-*/
-?>
 
 <div class="main_area">
   <div class="card_group">
@@ -75,6 +68,13 @@
         <div class="title-area">
           <h2 class="title">{{$shop->shop_name}}
           </h2>
+        </div>
+        <div class="review-button-area">
+          <form action="/review/evaluation" method="POST"> 
+            @csrf
+            <input type="hidden" name="shop_id" value="{{$shop->id}}" />
+            <button class="review-button">Review</button>
+          </form>
         </div>
       </div>
       <div class="card">
@@ -120,7 +120,7 @@
         </div>
           <select class="user_number_area" id="user_number" name="user_number" required>
               <option></option>
-              @for($j=1; $j <= 10; $j++)
+              @for($j=1; $j <= 5; $j++)
               <option value="{{$j}}">{{$j}}人</option>
               @endfor
           </select>

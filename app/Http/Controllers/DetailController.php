@@ -4,15 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\User;
-use App\Models\Area;
-use App\Models\Genru;
 use App\Models\Reserve;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Requests\ReserveRequest;
 use Illuminate\Pagination\Paginator;
-
-
 
 class DetailController extends Controller
 {

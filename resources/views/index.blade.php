@@ -1,55 +1,48 @@
 @extends('layouts.default')
 
 <head>
-<link rel="stylesheet" href="{{ asset('css/reset.css')}}" />
+<link rel="stylesheet" href="{{ asset('css/reset.css') }}">
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 </head>
 
 <body>
 @section('title', 'Rese')
-
 @section('nav')
 <div class="nav_area">
   @if (Auth::check())
-    <nav class="nav" id="nav">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/mypage">Mypage</a></li>
-        <form action="{{route('logout')}}" method="POST">
-        @csrf
-          <li>
-            <button class="button-item">Logout</button>
-          </li>
-        </form>
-      </ul>
-    </nav>
-    <div class="nav_title">
-      <div class="menu" id="menu">
-        <span class="menu_line--top"></span>
-        <span class="menu_line--middle"></span>
-        <span class="menu_line--bottom"></span>
-      </div>
+  <nav class="nav" id="nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/mypage">Mypage</a></li>
+      <form action="{{route('logout')}}" method="POST">
+      @csrf
+        <li>
+          <button class="button-item">Logout</button>
+        </li>
+      </form>
+    </ul>
+  </nav>
+  <div class="menu" id="menu">
+    <span class="menu_line--top"></span>
+    <span class="menu_line--middle"></span>
+    <span class="menu_line--bottom"></span>
+    <h1 class="title_item">Rese</h1>
+  </div>
   @else
-    <nav class="nav" id="nav">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/register">Registrastion</a>
-          </li>
-        <li><a href="/login">Login</a></li>
-      </ul>
-    </nav>
-    <div class="nav_title">
-      <div class="menu" id="menu">
-        <span class="menu_line--top"></span>
-        <span class="menu_line--middle"></span>
-        <span class="menu_line--bottom"></span>
-      </div>
-  @endif
-
-      <h1 class="title_item">Rese</h1>
-    </div>
-
-
+  <nav class="nav" id="nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Registrastion</a> </li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
+  <div class="menu" id="menu">
+    <span class="menu_line--top"></span>
+    <span class="menu_line--middle"></span>
+    <span class="menu_line--bottom"></span>
+    <h1 class="title_item">Rese</h1>
+  </div>
+    @endif
   <div class="search_area">
     <form action="/" method="POST">
       @csrf
@@ -70,19 +63,16 @@
           </option>
           @endforeach
         </select>
-          <button class="searchbutton">
-            <img class="musimegane" src="{{asset('img/musimegane.png')}}" alt="">
-          </button>
-          <input type="search" name="input" class="search_text_area" placeholder="search...">
+        <button class="searchbutton">
+          <img class="musimegane" src="{{asset('img/musimegane.png')}}" alt="">
+        </button>
+        <input type="search" name="input" class="search_text_area" placeholder="search..." />
       </div>
     </form>
   </div>
 </div>
 
 @section('content')
-
-<?php
-/*
   <div class="login-area">
   @if (Auth::check())
     <p>こんにちは {{$user->name . 'さん'}}</p>
@@ -90,19 +80,17 @@
     <p>ゲストさん　ログインお願いします。</p>
   @endif
   </div>
-*/
-?>
-
-  <div class="card_group">
-    @if (@isset($shops))
-      @foreach ($shops as $shop)
+<div class="card_group">
+  @if (@isset($shops))
+    @foreach ($shops as $shop)
       <div class="wrapper">
         <div class="card">
           <div class="content-img">
             <img src="{{$shop->image_path}}" width="50%">
           </div>
           <div class="text-box">
-            <h2 class="title">{{$shop->shop_name}}
+            <h2 class="title">
+              {{$shop->shop_name}}
             </h2>
           </div>
           <div class="area_genru_area">
@@ -127,18 +115,18 @@
                 </form>
               @else
               <form action="/delete" method="POST">
-                @csrf
-                  <input type="hidden" name="shop_id" value="{{$shop->id}}">
-                  <button class="heart_button"><img class="heart_button" src="{{asset('img/heart-red.png')}}" alt=""></button>
-                </form>
+              @csrf
+                <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                <button class="heart_button"><img class="heart_button" src="{{asset('img/heart-red.png')}}" alt=""></button>
+              </form>
               @endif
             @endif
           </div>
         </div>
       </div>
-      @endforeach
-    @endif
-  </div>
+    @endforeach
+  @endif
+</div>
 @endsection
 
 </body>
