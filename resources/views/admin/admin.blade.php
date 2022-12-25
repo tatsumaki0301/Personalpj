@@ -37,6 +37,14 @@
     <h2 class="h_text">管理者画面</h2>
   </div>
 </div>
+<div>
+  <form action="/admin/users" method="GET">
+    @csrf
+    <button>
+      ユーザーページへ
+    </button>
+  </form>
+</div>
 @if (Count($errors) > 0)
 <ul>
   @foreach ($errors->all() as $error)
@@ -112,6 +120,7 @@
     </tr>
     @endforeach
   </table>
+  {{ $persons->links() }}
 </div>
 @endsection
 

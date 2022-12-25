@@ -8,13 +8,14 @@ use App\Http\Requests\PersonRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Person;
 use App\Models\Shop;
+use App\Models\User;
 
 class AdminController extends Controller
 {
     public function index()
     {
 
-        $persons = Person::get();
+        $persons = Person::orderBy('created_at')->Paginate(5);
         
         $param = [
             'persons' => $persons,
@@ -59,5 +60,16 @@ class AdminController extends Controller
 
         return back();
         
+    }
+
+    public function show_users()
+    {
+        $users = User::all();
+
+        $param = [
+            'users' => $users,
+        ];
+
+        return view('admin.users', $param);
     }
 }

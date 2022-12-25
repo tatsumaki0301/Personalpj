@@ -134,28 +134,35 @@
   </table>
 </div>
 <div class="person_reserve_area">
-  <table class="person_reserve_table">
-    <tr class="person_reserve_tr">
-      <th class="person_reserve_th">ID</th>
-      <th class="person_reserve_th">ユーザー名</th>
-      <th class="person_reserve_th">メールアドレス</th>
-      <th class="person_reserve_th">予約日時</th>
-      <th class="person_reserve_th">予約時間</th>
-      <th class="person_reserve_th">予約人数</th>
-      <th class="person_reserve_th">登録日時</th>
-    </tr>
-  @foreach($reserves as $reserve)
-    <tr>
-      <td class="person_reserve_td">{{$reserve->id}}</td>
-      <td class="person_reserve_td">{{$reserve->user->name}}</td>
-      <td class="person_reserve_td">{{$reserve->user->email}}</td>
-      <td class="person_reserve_td">{{substr($reserve->datetime,10,6)}}</td>
-      <td class="person_reserve_td">{{substr($reserve->datetime,10,6)}}</td>
-      <td class="person_reserve_td">{{$reserve->user_number}}人</td>
-      <td class="person_reserve_td">{{$reserve->user->created_at}}</td>
-    </tr>
-  @endforeach
-  </table>
+    <table class="person_reserve_table">
+      <tr class="person_reserve_tr">
+        <th class="person_reserve_th">ID</th>
+        <th></th>
+        <th class="person_reserve_th">ユーザー名</th>
+        <th class="person_reserve_th">メールアドレス</th>
+        <th class="person_reserve_th">予約日時</th>
+        <th class="person_reserve_th">予約時間</th>
+        <th class="person_reserve_th">予約人数</th>
+        <th class="person_reserve_th">登録日時</th>
+        <th></th>
+      </tr>
+    @foreach($reserves as $reserve)
+      <tr>
+        <td class="person_reserve_td"><input type="hidden" name="id" value="{{$reserve->id}}" />{{$reserve->id}}</td>
+        <td><input type="hidden" name="shop_name" value="{{$reserve->shop->shop_name}}" /></td>
+        <td class="person_reserve_td"><input type="hidden" name="name" value="{{$reserve->user->name}}" />{{$reserve->user->name}}</td>
+        <td class="person_reserve_td"><input type="hidden" name="email" value="{{$reserve->user->email}}" />{{$reserve->user->email}}</td>
+        <td class="person_reserve_td"><input type="hidden" name="date" value="{{substr($reserve->datetime,0,10)}}" />{{substr($reserve->datetime,0,10)}}</td>
+        <td class="person_reserve_td"><input type="hidden" name="time" value="{{substr($reserve->datetime,10,6)}}" />{{substr($reserve->datetime,10,6)}}</td>
+        <td class="person_reserve_td"><input type="hidden" name="user_number" value="{{$reserve->user_number}}" />{{$reserve->user_number}}人</td>
+        <td class="person_reserve_td"><input type="hidden" name="created_at" value="{{$reserve->user->created_at}}" />{{$reserve->created_at}}</td>
+        <form action="/mail/reservemail" method="POST">
+          @csrf
+        <td class="person_reserve_td"><input type="hidden" name="id" value="{{$reserve->id}}" /><button>メール送信</button></td>
+        </form>
+      </tr>
+    @endforeach
+    </table>
 </div>
 @endsection
 

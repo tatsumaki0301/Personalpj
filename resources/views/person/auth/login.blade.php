@@ -33,7 +33,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="person/dashboard">
+        <form method="POST" action="person/login">
             @csrf
 
             <div class="login-text-area">
@@ -47,7 +47,7 @@
 
                 <x-label for="email" :value="__('email')" style="margin: 40 0 0 20;  border-bottom: 0.5px solid; width: 60px;" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus style="border: none; border-bottom: 0.5px solid; border-radius: 0; margin-top: 20px; margin-right: 20px;" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="('email')" required autofocus style="border: none; border-bottom: 0.5px solid; border-radius: 0; margin-top: 20px; margin-right: 20px;" />
             </div>
 
             <!-- Password -->

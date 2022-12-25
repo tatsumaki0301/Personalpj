@@ -9,8 +9,11 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\MailController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\PersonMiddleware;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Mailler;
 
 
 
@@ -42,15 +45,18 @@ Route::get('/admin/dashboard', [AdminController::class,'index'])->middleware(Adm
 Route::post('/admin/create', [AdminController::class, 'create']);
 Route::post('/admin/update', [AdminController::class, 'update']);
 Route::post('/admin/delete', [AdminController::class, 'delete']);
+Route::get('/admin/users', [AdminController::class, 'show_users']);
 
 Route::post('/person/shop_update', [PersonController::class, 'update']);
 Route::post('/person/shop_create', [PersonController::class, 'create']);
 
+Route::get('/mail/send', [MailController::class, 'send']);
+Route::post('/mail/reservemail', [MailController::class, 'reservemail']);
 
-Route::get('/file', [FileController::class, 'index']);
-Route::post('/file_upload', [FileController::class, 'upload']);
-
-
+Route::get('/mail', function() {
+    $mail_text = "メールテストで使いたい文章";
+    Mail::to('to_address@exanple.com')->send(new Mailler($mail_text));
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -70,7 +76,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 Route::namespace('Person')->prefix('person')->name('person.')->group(function(){
     Route::namespace('Auth')->group(function(){
         Route::get('login',[App\Http\Controllers\Person\Auth\AuthenticatedSessionController::class,'create'])->name('login');
-        Route::post('person/login',[App\Http\Controllers\Person\Auth\AuthenticatedSessionController::class,'store']);
+        Route::post('person/login',[App\Http\Controllers\Person\Auth\AuthenticatedSessionController::class,'store'])->name('personlogin');
         Route::post('/person/dashboard', [PersonController::class,'index'])->middleware(PersonMiddleware::class);
     });
     Route::post('logout',[App\Http\Controllers\Person\Auth\AuthenticatedSessionController::class,'destroy'])->name('logout');

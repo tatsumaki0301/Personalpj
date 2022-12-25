@@ -136,92 +136,21 @@ a {
   font-weight: 600;
   text-align: center;
 }
-
-.input_area{
-  width: 80%;
-  background: white;
-  margin: 50 auto;
-  padding: 10 0;
-}
-
-.input_teble_area{
-  text-align: center;
-  margin: 0 auto;
-  width: 80%;
-}
-
-.input_td_area{
-  width: 20%;
-}
-
-.input_text_class{
-  width: 80%;
-  margin: 0 20;
-  border-color: blue;
-  font-size: 15px;
-}
-
-.input_button_area{
-  margin: 20 auto;
-  text-align: center;
-}
-
-.input_button{
-  padding: 10 20;
-  border-radius: 5px;
-  border: none;
-  background: blue;
-  color: white;
-  font-size: 15px;
-  cursor: hand;
-}
-
-.person_detail_area{
-  width: 60%;
-  margin: 0 auto;
-}
-
-.person_detail_table{
+.user_list_area{
   width: 100%;
+  margin-top: 50px;
 }
-
-.person_detail_td{
+.user_list_table{
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+.user_list_th{
   width: 20%;
-  text-align: center;
 }
-
-.person_detail_input{
-  margin: auto 5px;
-  padding: 5px;
-  text-align: center;
-}
-
-.person_detail_input_td{
-  text-align: center;
-}
-
-.person_detail_button_area{
-  text-align: center;
-}
-
-.person_detail_update_button{
-  padding: 5 15;
-  margin: 10;
-  border: none;
-  border-radius: 5px;
-  background: blue;
-  color: white;
-  cursor: hand;
-}
-
-.person_detail_delete_button{
-  padding: 5 15;
-  margin: 10;
-  border: none;
-  border-radius: 5px;
-  background: red;
-  color: white;
-  cursor: hand;
+.user_list_td{
+  height: 50px;
+  vertical-align: middle;
 }
 .pagination {
   width: 80%;

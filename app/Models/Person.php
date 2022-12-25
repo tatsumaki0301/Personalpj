@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Person;
 
 class Person extends Authenticatable 
 {
@@ -13,6 +15,8 @@ class Person extends Authenticatable
 
     protected $guard = 'person';
     protected $table = 'persons';
+
+    
 
     /**
      * The attributes that are mass assignable.
