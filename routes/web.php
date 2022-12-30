@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Person\PersonController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\StripeController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\PersonMiddleware;
 use Illuminate\Support\Facades\Mail;
@@ -36,6 +38,10 @@ Route::post('/update', [ReserveController::class, 'update']);
 Route::get('/thanks', [ShopController::class, 'thanks']);
 
 
+Route::get('/qrcode', [QrCodeController::class, 'index']);
+Route::get('/qrcodeview', [QrCodeController::class, 'show']);
+
+
 Route::post('/review', [ReviewController::class, 'index']);
 Route::post('/review/star', [ReviewController::class, 'create']);
 Route::get('/verror', [ReviewController::class, 'verror']);
@@ -57,6 +63,11 @@ Route::get('/mail', function() {
     $mail_text = "メールテストで使いたい文章";
     Mail::to('to_address@exanple.com')->send(new Mailler($mail_text));
 });
+
+
+Route::get('/subscription', [StripeController::class, 'index']);
+Route::post('/subscription/afterpay', [StripeController::class, 'afterpay']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

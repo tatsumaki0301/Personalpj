@@ -48,7 +48,7 @@ class CommandTest extends Command
         $today = Carbon::today('Asia/Tokyo','9:00');
         $reserves = Reserve::wheredate('datetime', $today)->with('user')->get();
         foreach($reserves as $reserve){
-            return Mail::to($reserve->user->email)->send(new ReserveMail($reserve));
+            Mail::to($reserve->user->email)->send(new ReserveMail($reserve));
         }
     }
 }

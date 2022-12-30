@@ -1,0 +1,35 @@
+.container{
+  background: white;
+  width: 50%;
+  margin: 50 auto 0;
+  border: none;
+  border-radius: 10px;
+}
+.mb-3{
+  text-align: center;
+  padding: 20 0;
+  margin: 0 auto 30;
+  font-size: 18px;
+}
+.form_area{
+  width: 50%;
+  margin: 0 auto;
+}
+.name_area{
+  margin-bottom: 20px;
+}
+.button_area{
+  text-align: center;
+}
+.logout_area{
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+}
+.logout_button{
+  padding: 5px;
+  color: white;
+  border: none;
+  background: rgb(1, 62, 82);
+  border-radius: 5px;
+}

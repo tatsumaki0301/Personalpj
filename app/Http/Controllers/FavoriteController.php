@@ -35,7 +35,7 @@ class FavoriteController extends Controller
             $timers[$time] = date('H:i', $time);
         }
 
-        $param = 
+            $param = 
         [
             'user' => $user,
             'id' => $id,

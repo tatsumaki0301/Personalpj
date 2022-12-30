@@ -59,14 +59,22 @@
               <th class="reserve_count_text">
               <img src="{{asset('img/tokei2.png')}}" style="width: 20px; margin: 0 5 -5 0;">
               予約{{$reserves->firstItem() + $loop->index}}</th>
-              
+              <form action="/qrcode" method="GET">
+                @csrf
+                <td class="qrcode_area">
+                  <input type="hidden" name="qrcodeId" value="{{$reserve->id}}" />
+                  <button class="qrcode_button">
+                    QRコード
+                  </button>
+                </td>
+              </form>
               <form action="/review" method="POST">
                 @csrf
-                <td>
-                  <input type="hidden" name="reviewId" value="{{$reserve->id}}" />
-                </td>
                 <td class="review_button_area">
-                  <button class="review_button">レビュー</button>
+                  <input type="hidden" name="reviewId" value="{{$reserve->id}}" />
+                  <button class="review_button">
+                    レビュー
+                  </button>
                 </td>
               </form>
 
@@ -133,6 +141,10 @@
                 <td class="update_button_area">
                   <button class="update_button">予約変更</button>
                 </td>
+            </form>
+            <form action="/subscription" method="GET">
+              @csrf
+              <td><button class="pay_button">決済</button></td>
             </form>
             </tr>
           </table>
