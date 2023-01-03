@@ -71,7 +71,7 @@
     </form>
   </div>
 </div>
-
+@endsection
 @section('content')
   <div class="login-area">
   @if (Auth::check())

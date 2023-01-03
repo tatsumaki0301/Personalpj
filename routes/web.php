@@ -59,12 +59,6 @@ Route::post('/person/shop_create', [PersonController::class, 'create']);
 Route::get('/mail/send', [MailController::class, 'send']);
 Route::post('/mail/reservemail', [MailController::class, 'reservemail']);
 
-Route::get('/mail', function() {
-    $mail_text = "メールテストで使いたい文章";
-    Mail::to('to_address@exanple.com')->send(new Mailler($mail_text));
-});
-
-
 Route::get('/subscription', [StripeController::class, 'index']);
 Route::post('/subscription/afterpay', [StripeController::class, 'afterpay']);
 

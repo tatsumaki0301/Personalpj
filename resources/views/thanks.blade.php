@@ -26,6 +26,8 @@
     <h1 class="title_item">Rese</h1>
   </div>
 
+@endsection
+
 @section('content')
 
 <div class="content_area">

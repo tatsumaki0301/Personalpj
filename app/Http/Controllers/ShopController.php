@@ -29,14 +29,12 @@ class ShopController extends Controller
             'shops' => $shops,
             'areas' => $areas,
             'genrus' => $genrus,
-            'input' => $request->input,
             'user' => $user,
             'id' => $id,
         ];
 
         return view('index', $param, [
             'shops' => $shops,
-            'input' => '',
         ]);
     }
 
@@ -85,6 +83,7 @@ class ShopController extends Controller
             'id' => $id,
 
         ];
+
         return view('index', $param, [
             'shops' => $shops,
         ]);
