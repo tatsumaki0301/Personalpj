@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Mailler;
 use App\Mail\ReserveMail;
 use App\Models\Reserve;
+use App\Models\User;
 
 
 class MailController extends Controller
 {
     public function send(Request $request)
     {
-
         $name = $request->name;
         $email = $request->email;
 

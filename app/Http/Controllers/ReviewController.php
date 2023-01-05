@@ -20,7 +20,7 @@ class ReviewController extends Controller
         $id = Auth::id();
         $reserves = Reserve::where('id', $request->reviewId)->with('user')->where('user_id', '=', $id)->get();
         $stars = Star::get();
-
+        
         $param = [
             
             'reserves' => $reserves,

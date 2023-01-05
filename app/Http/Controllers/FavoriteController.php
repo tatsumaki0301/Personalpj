@@ -35,6 +35,8 @@ class FavoriteController extends Controller
             $timers[$time] = date('H:i', $time);
         }
 
+        $reviews = Review::with('reserve')->with('user')->where('id', '=', $id)->get();
+
             $param = 
         [
             'user' => $user,
@@ -43,6 +45,7 @@ class FavoriteController extends Controller
             'favorite' => $favorite,
             'reserves' => $reserves, 
             'timers' => $timers,
+            'reviews' => $reviews,
         ];
 
         return view('favorite', $param);

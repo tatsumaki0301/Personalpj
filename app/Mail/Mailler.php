@@ -16,10 +16,9 @@ class Mailler extends Mailable
      *
      * @return void
      */
-    public function __construct($name, $email)
+    public function __construct($user)
     {
-        $this->name = $name;
-        $this->email = $email;
+        $this->user= $user;
     }
 
     /**
@@ -29,11 +28,9 @@ class Mailler extends Mailable
      */
     public function build()
     {
-        return $this->to($this->email)
-                    ->subject('テストタイトル')
-                    ->view('emails.mail')
+        return $this->view('emails.mail')
                     ->with([
-                        'name' => $this->name,
-                    ]);
+                        'user' => $this->user
+                    ])->subject('いつもありがとうございます。');
     }
 }

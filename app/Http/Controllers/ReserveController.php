@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Reserve;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReserveRequest;
 use DateTime;
@@ -49,6 +51,16 @@ class ReserveController extends Controller
     public function delete(Request $request)
     {
 
+        $reserve_id = $request->reserveid;
+        $reserve_id = null;
+
+        $param = [
+            'reserve_id' => $reserve_id,
+        ];
+
+
+        Review::where('id', '=', $request->deleteId)->update($param);
+        
         Reserve::find($request->deleteId)->delete();
 
         return back();

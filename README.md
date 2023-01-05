@@ -89,7 +89,9 @@
 (http://127.0.0.1:8000/mail/send)  
   
 - 予約当日リマインダー  
-(http://127.0.0.1:8000/mail/reservemail)  
+テスト実行（当日予約があれば実行）
+php artisan schedule:run  
+
 
   
 

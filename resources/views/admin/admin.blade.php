@@ -37,10 +37,10 @@
     <h2 class="h_text">管理者画面</h2>
   </div>
 </div>
-<div>
+<div class="userpage_button_area">
   <form action="/admin/users" method="GET">
     @csrf
-    <button>
+    <button class="userpage_button">
       ユーザーページへ
     </button>
   </form>

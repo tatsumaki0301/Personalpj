@@ -116,6 +116,18 @@ a {
   color: blue;
 }
 
+.userpage_button_area{
+  width: 90%;
+  text-align: end;
+  margin-top: 30px;
+}
+
+.userpage_button{
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background: blue;
+}
 
 .content_area {
   width: 40%;

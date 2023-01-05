@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->string('comment');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('shop_id')->constrained('shops');
-            $table->foreignId('reserve_id')->constrained('reserves');
+            $table->foreignId('reserve_id')->nullable()->constrained('reserves');
             $table->foreignId('star_id')->constrained('stars');
             $table->timestamps();
             $table->unique('reserve_id');
