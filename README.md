@@ -1,6 +1,6 @@
 # Rese    
 ### 飲食店予約アプリ
-[Rese](http://127.0.0.1:8000)
+[Rese](http://localhost)
   
 
 ## 作成した目的  
@@ -46,9 +46,11 @@
 - 店舗画像ストレージ保存  
 - S3へファイルアップロード  
 - メール認証機能  
-  
+- Docker  
+
 ## 仕様技術（実行環境）  
-- Laravel8.X  
+- Laravel 8.X  
+- Laravel Sail  
 - PHP  
 - HTML  
 - CSS  
@@ -58,7 +60,9 @@
 - Stripe  
 - simple-qrcode
 - mailtrap
-  
+- Docker  
+- WSL2  
+
 ## テーブル設計  
 ![table1](/img/table1.png)  
 ![table2](/img/table2.png)  
@@ -70,24 +74,24 @@
 ![ER図](/img/Rese_ER図.png)
   
 ## 環境構築  
-ローカル環境構築  
-- php artisan migrate:fresh --seed （テーブル作成とシーディング）  
+- Docker Desktopのインストールが必要です。
+- sail php artisan migrate:fresh --seed （テーブル作成とシーディング）  
   
   
 ## 他に記載することがあれば記載する  
 - 管理者login画面  
-(http://127.0.0.1:8000/admin/login)  
+(http://localhost/admin/login)  
 メールアドレス：　admin@example.com  
 パスワード：　test777  
   
 - 店舗責任者login画面  
-(http://127.0.0.1:8000/person/login)  
+(http://localhost/person/login)  
 メールアドレス：　person001@example.com  
 パスワード：　person001  
   
 - 予約当日リマインダー・利用者へメール一斉送信   
 テスト実行
-php artisan schedule:run  
+sail php artisan schedule:run  
 
 
   

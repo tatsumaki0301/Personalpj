@@ -144,7 +144,7 @@
             </form>
             <form action="/subscription" method="GET">
               @csrf
-              <td><button class="pay_button">決済</button></td>
+              <td><button class="pay_button">￥</button></td>
             </form>
             </tr>
           </table>
