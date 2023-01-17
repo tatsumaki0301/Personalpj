@@ -53,6 +53,7 @@ class ShopController extends Controller
         $area_id = htmlspecialchars($_POST['area_id'], ENT_QUOTES);
         $genru_id = htmlspecialchars($_POST['genru_id'], ENT_QUOTES);
 
+
         $query = Shop::query();
 
         if($input){

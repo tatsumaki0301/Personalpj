@@ -11,6 +11,7 @@ use database\Seeders\AdminSeeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Shop;
@@ -35,8 +36,35 @@ class ShopControllerTest extends TestCase
         $response = $this->get('/');
         $response->assertStatus(200);
 
-        $response = $this->get('/thanks');
+        $response = $this->get('/register');
         $response->assertStatus(200);
+        $response->assertViewIs('auth.register');
+
+        $response = $this->get('/login');
 
     }
+
+    public function testShopController_post_index()
+    {
+
+        $user = new User;
+        $user->name = "太郎";
+        $user->email = "taro@example.com";
+        $user->password = Hash::make('11111111');
+        $user->save();
+
+        $readUser = User::where('name', '太郎')->first();
+        $this->assertNotNull($readUser);
+        $this->assertTrue(Hash::check('11111111', $readUser->password));
+
+        $response = $this->actingAS($user)->get('/thanks');
+        $response->assertStatus(200);
+        $response->assertViewIs('thanks');
+
+        $response = $this->actingAs($user);
+        $response = $this->get('/');
+        $response->assertViewIs('index');
+
+    }
+
 }
